@@ -1,11 +1,12 @@
 import "./App.css";
 import LoginSignup from "./Components/LoginSignup/LoginSignup";
+import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import UserProfileCard from "./Components/UserProfileCard/UserProfileCard";
 
 function App() {
   return (
-    <div>
-      <UserProfileCard />
+    <div className="App">
+      <ProfilePage />
     </div>
   );
 }

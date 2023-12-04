@@ -1,0 +1,10 @@
+.profileContainer {
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+}
+.form-control {
+  margin-bottom: 30px;
+}
