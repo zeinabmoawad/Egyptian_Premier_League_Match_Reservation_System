@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-datepicker/dist/react-datepicker.css";
 import "./ProfilePage.css";
+import DatePicker from "react-datepicker";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 const ProfilePage = () => {
@@ -9,6 +11,15 @@ const ProfilePage = () => {
   const [email, setEmail] = useState("mena@gmail.com");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [gender, setGender] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [role, setRole] = useState("");
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   return (
     <div>
@@ -42,6 +53,37 @@ const ProfilePage = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>
+              <Form.Group
+                controlId="dateControl"
+                className="date-picker-control"
+              >
+                <Form.Group controlId="cityControl">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required
+                  />
+                  <Form.Group controlId="addressControl">
+                    <Form.Label>Address (Optional)</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </Form.Group>
+                </Form.Group>
+                <Form.Label>Birthdate</Form.Label>
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={handleDateChange}
+                  dateFormat="MM/dd/yyyy"
+                  isClearable
+                  showYearDropdown
+                  scrollableYearDropdown
+                />
+              </Form.Group>
               <Button type="submit" varient="primary">
                 Update
               </Button>
@@ -73,6 +115,33 @@ const ProfilePage = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 ></Form.Control>
+              </Form.Group>
+              <Form.Group controlId="genderControl">
+                <Form.Label>Gender</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  required
+                >
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="roleControl">
+                <Form.Label>Role</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  required
+                >
+                  <option value="">Select Role</option>
+                  <option value="manager">Manager</option>
+                  <option value="fan">Fan</option>
+                </Form.Control>
               </Form.Group>
             </Form>
           </Col>
