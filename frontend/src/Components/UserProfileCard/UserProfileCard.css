@@ -1,0 +1,32 @@
+.upc{
+    width: 350px;
+    margin: 20px;
+    border-radius: 4px;
+    padding-bottom: 20px;
+    background: white;
+}
+.gradiant{
+    background-image: linear-gradient(#a481cd,#441b74);
+    height: 125px;
+    border-radius: 4px 4px 0px 0px;
+}
+.profile-down{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.profile-down img{
+    height: 150px;
+    border-radius: 100px;
+    margin-top: -75px;
+    padding: 5px;
+    background: white;
+}
+.profile-title{
+    font-size: 36px;
+    font-weight: 600px;
+}
+.profile-description{
+    padding: 20px 40px;
+    font-size: 16px;
+}
