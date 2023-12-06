@@ -3,6 +3,7 @@ import './ViewMatches.css';
 import { Container, Row, Col } from 'react-bootstrap';
 
 export default function ViewMatches() {
+    // var matches = [{}]
   return (
     <div>
         <Container className='matches-container'>
