@@ -16,7 +16,7 @@
   margin-bottom: 0.5rem;
 }
 button[type="submit"] {
-  background-color: #007bff;
+  background-color: #441b74;
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
@@ -24,6 +24,8 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-button[type="submit"]:hover {
-  background-color: #0056b3;
+button[type="submit"]:hover,
+button[type="submit"]:focus,
+button[type="submit"]:active {
+  background-color: #1b0732;
 }

@@ -6,9 +6,10 @@ import DatePicker from "react-datepicker";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 const ProfilePage = () => {
-  const [fname, setFName] = useState("Menatalh");
-  const [lname, setLName] = useState("Hossamalden");
-  const [email, setEmail] = useState("mena@gmail.com");
+  const [username, setUsername] = useState("");
+  const [fname, setFName] = useState("");
+  const [lname, setLName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
@@ -33,8 +34,9 @@ const ProfilePage = () => {
                 className="form-control"
                 type="text"
                 placeholder="Enter Name"
-                value={fname}
-                onChange={(e) => setFName(e.target.value)}
+                value={username}
+                required
+                onChange={(e) => setUsername(e.target.value)}
               ></Form.Control>
               <Form.Label>First Name</Form.Label>
               <Form.Control
@@ -42,6 +44,7 @@ const ProfilePage = () => {
                 type="text"
                 placeholder="Enter Name"
                 value={fname}
+                required
                 onChange={(e) => setFName(e.target.value)}
               ></Form.Control>
               <Form.Group controlId="password">
@@ -97,6 +100,7 @@ const ProfilePage = () => {
                   type="email"
                   placeholder="Enter Email"
                   value={email}
+                  required
                   onChange={(e) => setEmail(e.target.value)}
                 ></Form.Control>
               </Form.Group>
