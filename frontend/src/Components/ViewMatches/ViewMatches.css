@@ -17,6 +17,7 @@
   font-size: 23px;
   font-weight: 500;
   padding-left: 25px;
+  text-shadow: 2px 2px 8px #312f2f;
 }
 .match {
   background: linear-gradient(90deg,#210155, #8a00b5);
