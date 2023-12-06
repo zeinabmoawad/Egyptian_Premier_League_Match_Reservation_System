@@ -7,7 +7,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 30px;
-  height: 500px;
+  height: 480px;
   width: 100%;
   margin-top: 25px;
   position: relative;
@@ -19,7 +19,7 @@
   padding-left: 25px;
 }
 .match {
-  background-color: #441b74;
+  background: linear-gradient(90deg,#210155, #8a00b5);
   width: 100%;
   padding: 25px;
   border-radius: 20px;
