@@ -9,7 +9,7 @@ export default function MatchDetails() {
   return (
     <div>
       <Container className="container-fluid match-details-container">
-        <Row>
+        <Row className="match-details-row">
           <Col className="match-details-teams">
             <div className="team">
               <img src={AlAhly} alt="" />
@@ -25,7 +25,7 @@ export default function MatchDetails() {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row className="match-details-row">
           <Col>
             <Seats></Seats>
             <img src={field} alt="" />

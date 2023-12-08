@@ -3,7 +3,14 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.match-details-row {
+  width: 100%;
+}
 .match-details-teams {
   display: flex;
   justify-content: space-around;
+}
+.match-details-container img{
+  display: block;
+  margin: auto;
 }

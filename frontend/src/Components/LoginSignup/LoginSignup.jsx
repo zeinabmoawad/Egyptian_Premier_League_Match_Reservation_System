@@ -8,13 +8,15 @@ function Login() {
 
   return (
     <div className="screen">
-      <div className="container">
+      <div className="loginsignup-container">
         <div className="header">
-          <div className="text"><h2>{action}</h2></div>
+          <div className="text">
+            <h2>{action}</h2>
+          </div>
           <div className="signinlink">
-                    <span>New ? </span>
-                    <a href="/Signup">Create an account</a>
-                </div>
+            <span>New ? </span>
+            <a href="/Signup">Create an account</a>
+          </div>
         </div>
         <div className="inputs">
           {action === "Sign in" ? null : (
