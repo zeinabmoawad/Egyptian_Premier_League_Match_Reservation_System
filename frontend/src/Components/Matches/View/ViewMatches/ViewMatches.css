@@ -1,14 +1,18 @@
 .matches-container {
   background-color: #f5f8f9;
+  width: 100%;
+  /* align-items: center; */
+  /* margin: auto; */
 }
 .matches-header {
-  background-image: url("../Assets/ViewMatchesHeader.avif");
+  background-image: url("../../../Assets/ViewMatchesHeader.avif");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 30px;
   height: 480px;
-  width: 100%;
+  width: 90%;
+  margin-left: 3%;
   margin-top: 25px;
   position: relative;
   text-align: left;
@@ -18,10 +22,21 @@
   font-weight: 500;
   padding-left: 25px;
   text-shadow: 2px 2px 8px #312f2f;
+  /* background-color: red; */
+}
+.matches{
+  width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+
 }
 .match {
   background: linear-gradient(90deg,#210155, #8a00b5);
-  width: 100%;
+  /* width: 25%; */
   padding: 25px;
   border-radius: 20px;
   margin-top: 20px;
