@@ -39,16 +39,17 @@ const Signup = () => {
                 <h2>Create Account</h2>
                 <div className={classes.signinlink}>
                     <span>Already have one?</span>
-                    <a href="">Signin</a>
+                    <a href="/Signin">Signin</a>
                 </div>
-                <div className={classes.form_group}><input
-                    type="text"
-                    name="firstName"
-                    placeholder=' First Name'
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    required
-                /></div>
+                <div className={classes.form_group}
+                ><input
+                        type="text"
+                        name="firstName"
+                        placeholder=' First Name'
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
+                    /></div>
                 <br />
                 <div className={classes.form_group}> <input
                     type="text"

@@ -4,17 +4,20 @@ import "./LoginSignup.css";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa6";
 
 function Login() {
-  const [action, setAction] = useState("Login");
+  const [action, setAction] = useState("Sign in");
 
   return (
     <div className="screen">
       <div className="container">
         <div className="header">
-          <div className="text">{action}</div>
-          <div className="underline"></div>
+          <div className="text"><h2>{action}</h2></div>
+          <div className="signinlink">
+                    <span>New ? </span>
+                    <a href="/Signup">Create an account</a>
+                </div>
         </div>
         <div className="inputs">
-          {action === "Login" ? null : (
+          {action === "Sign in" ? null : (
             <div className="input">
               <FaUser className="icon" />
               <input type="text" placeholder="Name" />
@@ -33,21 +36,21 @@ function Login() {
           <div className="forgot-password">Forgot your password?</div>
         )}
         <div className="submit-container">
-          <div
+          {/* <div
             className={action === "Sign Up" ? "submit" : "submit  gray"}
             onClick={() => {
               setAction("Sign Up");
             }}
           >
             Sign Up
-          </div>
+          </div> */}
           <div
-            className={action === "Login" ? "submit" : "submit  gray"}
+            className={action === "Sign in" ? "submit" : "submit  gray"}
             onClick={() => {
-              setAction("Login");
+              setAction("Sign in");
             }}
           >
-            Login
+            Sign in
           </div>
         </div>
       </div>
