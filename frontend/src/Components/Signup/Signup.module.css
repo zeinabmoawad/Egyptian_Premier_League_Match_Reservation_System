@@ -1,28 +1,24 @@
 .form_container {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: start;
-    height: 96vh;
+    height: 85vh;
     width: 30vw;
-    margin-left: 550px;
-    margin-top:20px;
+    margin-top:5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    
   }
   
   .form_group {
-    width: 90%;
+    width: 400px;
     height: 7%;
-    margin-bottom: 1px;
-    text-align: left;
     color: #5c6570;
   }
   
-  input {
-    margin-left: 20px;
+ input {
     width: 100%;
-    box-sizing: border-box;
     border-radius: 4px;
     border: 3px solid #ccc;
     height: 100%;
@@ -32,13 +28,8 @@
 
   }
   
-form{
-    width: 100%;
-}
 select{
-    margin-left: 20px;
     width: 100%;
-    box-sizing: border-box;
     border-radius: 4px;
     border: 3px solid #ccc;
     height: 100%;
@@ -47,10 +38,12 @@ select{
     font-family: Helvetica Neue;
 
 }
-h2{
-   color: #5c6570
 
+h2{
+   color: #5c6570;
+  text-align: center;
 }
+
 input:focus {
     border: 3px solid #4c3889;
   }
@@ -61,6 +54,7 @@ button{
     background-color: #4c3889;
     border: 3px solid #4c3889;
     margin-bottom: 10px;
+    margin-left: 45px;
     color: white;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;;
 }
@@ -69,4 +63,5 @@ a{
 }
 .signinlink{
     margin-bottom: 10px;
-}
+    text-align: center;
+} 
