@@ -1,0 +1,9 @@
+.match-details-container {
+  background-image: url("../Assets/stadium.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.match-details-teams {
+  display: flex;
+  justify-content: space-around;
+}

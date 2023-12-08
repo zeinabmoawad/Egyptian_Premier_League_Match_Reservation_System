@@ -1,0 +1,7 @@
+.seats-container {
+  width: fit-content !important;
+  background-color: transparent;
+}
+.seats-col {
+  padding: 0 !important;
+}
