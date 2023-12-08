@@ -1,0 +1,31 @@
+.profileContainer {
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+}
+.form-control {
+  margin-bottom: 30px;
+}
+.date-picker-control {
+  width: 100%;
+}
+.date-picker-control label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+button[type="submit"] {
+  background-color: #441b74;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus,
+button[type="submit"]:active {
+  background-color: #1b0732;
+}
