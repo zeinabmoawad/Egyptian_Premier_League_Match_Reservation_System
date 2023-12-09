@@ -6,10 +6,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import field from "../Assets/field.png";
 import AlAhly from "../Assets/teams logos 240x240/01.png";
 import WadiDegla from "../Assets/teams logos 240x240/15.png";
+import DeleteTicketPopUp from "./deleteTicketPopUp";
 export default function MatchDetails() {
   const [columns, setColumns] = useState(5);
   const [rows, setRows] = useState(5);
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [purchase, setPurchase] = useState(false);
   const handleSeatClick = (seatId) => {
     if (selectedSeats.includes(seatId)) {
       setSelectedSeats((prevSelectedSeats) =>
@@ -25,7 +27,12 @@ export default function MatchDetails() {
     );
   }
   return (
-    <div>
+    <div className="match-details">
+      {purchase ? (
+        <div className="overlay">
+          <DeleteTicketPopUp price={100} />
+        </div>
+      ) : null}
       <Container className="container-fluid match-details-container">
         <Row className="match-details-row">
           <Col className="match-details-teams">
@@ -57,7 +64,11 @@ export default function MatchDetails() {
             {selectedSeats.length == 0 ? null : (
               <div className="match-details-tickets-header">
                 <h1>Tickets:</h1>
-                <button type="button" class="btn btn-primary">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  onClick={() => setPurchase(true)}
+                >
                   Purchase
                 </button>
               </div>

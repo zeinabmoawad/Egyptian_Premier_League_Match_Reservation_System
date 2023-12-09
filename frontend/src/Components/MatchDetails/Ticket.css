@@ -8,6 +8,7 @@
   color: white;
   position: relative;
   margin: 10px;
+  z-index: 0;
 }
 .ticket-delete {
   text-align: right;

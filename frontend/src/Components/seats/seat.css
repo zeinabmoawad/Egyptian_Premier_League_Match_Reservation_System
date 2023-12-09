@@ -1,9 +1,12 @@
 .selected {
-  color: greenyellow;
+  color: white;
 }
 .not-selected {
   color: black;
 }
 .reserved {
   color: gray;
+}
+.icon {
+  font-size: large;
 }
