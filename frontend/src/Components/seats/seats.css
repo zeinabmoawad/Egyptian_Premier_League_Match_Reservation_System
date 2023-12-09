@@ -12,3 +12,6 @@
 .seats-col {
   padding: 0 !important;
 }
+.row > * {
+  padding: 1px !important;
+}

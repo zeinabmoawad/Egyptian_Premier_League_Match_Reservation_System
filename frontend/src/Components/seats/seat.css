@@ -1,6 +1,9 @@
 .selected {
-  color: black;
+  color: greenyellow;
 }
 .not-selected {
-  color: red;
+  color: black;
+}
+.reserved {
+  color: gray;
 }

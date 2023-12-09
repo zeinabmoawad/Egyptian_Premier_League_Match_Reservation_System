@@ -19,6 +19,11 @@ export default function MatchDetails() {
       setSelectedSeats((prevSelectedSeats) => [...prevSelectedSeats, seatId]);
     }
   };
+  function deleteTicket(label) {
+    setSelectedSeats((prevSelectedSeats) =>
+      prevSelectedSeats.filter((id) => id !== label)
+    );
+  }
   return (
     <div>
       <Container className="container-fluid match-details-container">
@@ -58,7 +63,11 @@ export default function MatchDetails() {
             )}
             <div className="match-details-tickets">
               {selectedSeats.map((item, i) => (
-                <Ticket label={item} price="200"></Ticket>
+                <Ticket
+                  label={item}
+                  price="200"
+                  deleteTicket={deleteTicket}
+                ></Ticket>
               ))}
             </div>
           </Col>

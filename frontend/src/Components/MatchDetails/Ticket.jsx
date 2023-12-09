@@ -5,9 +5,12 @@ import { FaTicketAlt } from "react-icons/fa";
 import { MdEventSeat } from "react-icons/md";
 import { TbReportMoney } from "react-icons/tb";
 export default function Ticket(props) {
+  function deleteTicket() {
+    props.deleteTicket(props.label);
+  }
   return (
     <div className="ticket">
-      <div className="ticket-delete">
+      <div className="ticket-delete" onClick={deleteTicket}>
         <MdDelete />
       </div>
       <div className="ticker-ticket">
