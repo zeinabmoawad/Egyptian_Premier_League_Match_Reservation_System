@@ -1,6 +1,7 @@
 import React from "react";
 import "./MatchDetails.css";
 import Seats from "../seats/seats";
+import Ticket from "./Ticket";
 import { Container, Row, Col } from "react-bootstrap";
 import field from "../Assets/field.png";
 import AlAhly from "../Assets/teams logos 240x240/01.png";
@@ -30,7 +31,9 @@ export default function MatchDetails() {
             <Seats></Seats>
             <img src={field} alt="" />
           </Col>
-          <Col></Col>
+          <Col>
+            <Ticket label="B1" price="200"></Ticket>
+          </Col>
         </Row>
       </Container>
     </div>
