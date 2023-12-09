@@ -24,13 +24,13 @@ export default function MatchDetails() {
       <Container className="container-fluid match-details-container">
         <Row className="match-details-row">
           <Col className="match-details-teams">
-            <div className="team">
+            <div>
               <img src={AlAhly} alt="" />
               <p>Al-Ahly</p>
             </div>
-            <div>
-              <p>12:00</p>
-              <p>Mar 23,2023</p>
+            <div className="match-details-day-time">
+              <p className="match-details-time">12:00</p>
+              <p className="match-details-day">Mar 23,2023</p>
             </div>
             <div>
               <img src={WadiDegla} alt="" />
@@ -48,9 +48,19 @@ export default function MatchDetails() {
             <img src={field} alt="" />
           </Col>
           <Col>
-            {selectedSeats.map((item, i) => (
-              <Ticket label={item} price="200"></Ticket>
-            ))}
+            {selectedSeats.length == 0 ? null : (
+              <div className="match-details-tickets-header">
+                <h1>Tickets:</h1>
+                <button type="button" class="btn btn-primary">
+                  Purchase
+                </button>
+              </div>
+            )}
+            <div className="match-details-tickets">
+              {selectedSeats.map((item, i) => (
+                <Ticket label={item} price="200"></Ticket>
+              ))}
+            </div>
           </Col>
         </Row>
       </Container>

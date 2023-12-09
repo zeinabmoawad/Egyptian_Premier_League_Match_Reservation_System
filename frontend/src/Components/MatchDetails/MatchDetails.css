@@ -3,6 +3,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between !important;
 }
 .match-details-row {
   width: 100%;
@@ -10,8 +13,30 @@
 .match-details-teams {
   display: flex;
   justify-content: space-around;
+  color: white;
+  font-size: 46px;
+  font-weight: 600;
+  margin-bottom: 85px;
+}
+.match-details-time {
+  text-shadow: 2px 2px 8px black;
+  font-size: 65px;
+  font-weight: 700;
+}
+.match-details-day {
+  text-shadow: 2px 2px 8px black;
+  font-size: 15px;
+  font-weight: 500;
 }
 .match-details-container img {
   display: block;
   margin: auto;
+}
+.match-details-tickets {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.match-details-ticket {
+  margin: 10px;
 }
