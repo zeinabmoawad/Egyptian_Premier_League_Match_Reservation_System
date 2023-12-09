@@ -9,6 +9,16 @@ import WadiDegla from "../Assets/teams logos 240x240/15.png";
 export default function MatchDetails() {
   const [columns, setColumns] = useState(5);
   const [rows, setRows] = useState(5);
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const handleSeatClick = (seatId) => {
+    if (selectedSeats.includes(seatId)) {
+      setSelectedSeats((prevSelectedSeats) =>
+        prevSelectedSeats.filter((id) => id !== seatId)
+      );
+    } else {
+      setSelectedSeats((prevSelectedSeats) => [...prevSelectedSeats, seatId]);
+    }
+  };
   return (
     <div>
       <Container className="container-fluid match-details-container">
@@ -30,11 +40,17 @@ export default function MatchDetails() {
         </Row>
         <Row className="match-details-row">
           <Col>
-            <Seats columns={columns} rows={rows}></Seats>
+            <Seats
+              columns={columns}
+              rows={rows}
+              onSeatClick={handleSeatClick}
+            ></Seats>
             <img src={field} alt="" />
           </Col>
           <Col>
-            <Ticket label="B1" price="200"></Ticket>
+            {selectedSeats.map((item, i) => (
+              <Ticket label={item} price="200"></Ticket>
+            ))}
           </Col>
         </Row>
       </Container>

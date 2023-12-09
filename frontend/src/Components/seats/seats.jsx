@@ -48,7 +48,11 @@ export default function Seats(props) {
         else
           rowSeats.push(
             <Col key={i} className="seats-col">
-              <Seat key={`${i}-${j}`} />
+              <Seat
+                key={`${i}-${j}`}
+                id={alphabet[i] + j}
+                onSeatClick={props.onSeatClick}
+              />
             </Col>
           );
       }
