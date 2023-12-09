@@ -49,6 +49,7 @@ export default function MatchDetails() {
               columns={columns}
               rows={rows}
               onSeatClick={handleSeatClick}
+              selectedSeats={selectedSeats}
             ></Seats>
             <img src={field} alt="" />
           </Col>
