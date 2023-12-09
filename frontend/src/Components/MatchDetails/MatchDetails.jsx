@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MatchDetails.css";
 import Seats from "../seats/seats";
 import Ticket from "./Ticket";
@@ -7,6 +7,8 @@ import field from "../Assets/field.png";
 import AlAhly from "../Assets/teams logos 240x240/01.png";
 import WadiDegla from "../Assets/teams logos 240x240/15.png";
 export default function MatchDetails() {
+  const [columns, setColumns] = useState(5);
+  const [rows, setRows] = useState(5);
   return (
     <div>
       <Container className="container-fluid match-details-container">
@@ -28,7 +30,7 @@ export default function MatchDetails() {
         </Row>
         <Row className="match-details-row">
           <Col>
-            <Seats></Seats>
+            <Seats columns={columns} rows={rows}></Seats>
             <img src={field} alt="" />
           </Col>
           <Col>
