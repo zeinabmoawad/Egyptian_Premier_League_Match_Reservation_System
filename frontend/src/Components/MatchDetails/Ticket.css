@@ -1,0 +1,38 @@
+.ticket {
+  width: 123px;
+  height: 123px;
+  border-radius: 23px;
+  background-color: rebeccapurple;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: relative;
+  margin: 10px;
+  z-index: 0;
+}
+.ticket-delete {
+  text-align: right;
+  font-size: 23px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.ticker-ticket {
+  font-size: 46px;
+  position: absolute;
+  top: 23px;
+  right: 40px;
+}
+.ticket-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  padding: 0 10px;
+}
+.match-details-tickets-header {
+  display: flex;
+  justify-content: space-between;
+}

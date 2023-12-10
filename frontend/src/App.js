@@ -1,12 +1,15 @@
-import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
-import './App.css';
-import HomePage from"./Components/Home/Home.jsx"
-import Signup from"./Components/Signup/Signup.jsx"
-import Login from './Components/LoginSignup/LoginSignup';
-import MatcchesView from './Components/Matches/ViewMatches/ViewMatches.jsx'
-function App() {
-  return (
+import "./App.css";
+import LoginSignup from "./Components/LoginSignup/LoginSignup";
+import MatchDetails from "./Components/MatchDetails/MatchDetails";
+import ProfilePage from "./Components/ProfilePage/ProfilePage";
+import UserProfileCard from "./Components/UserProfileCard/UserProfileCard";
+import Seats from "./Components/seats/seats";
+import Seat from "./Components/seats/seat";
+import { Col } from "react-bootstrap";
 
+function App() {
+  const seats = [1, 2, 3, 4, 5];
+  return (
     <div className="App">
       <MatcchesView userType="FEA"></MatcchesView>
       {/* <Router>

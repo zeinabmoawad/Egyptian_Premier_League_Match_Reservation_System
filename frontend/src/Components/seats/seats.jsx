@@ -1,0 +1,79 @@
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import Seat from "./seat";
+import "./seats.css";
+
+export default function Seats(props) {
+  const numbers = Array.from(Array(props.columns + 1).keys());
+  const alphabet = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  const renderSeats = () => {
+    const seats = [];
+
+    for (let i = 0; i < props.rows; i++) {
+      const rowSeats = [];
+      for (let j = 0; j <= props.columns; j++) {
+        if (j == 0)
+          rowSeats.push(
+            <Col key={i} className="seats-col">
+              {alphabet[i]}
+            </Col>
+          );
+        else
+          rowSeats.push(
+            <Col key={i} className="seats-col">
+              <Seat
+                key={`${i}-${j}`}
+                id={alphabet[i] + j}
+                onSeatClick={props.onSeatClick}
+                selected={props.selectedSeats.includes(alphabet[i] + j)}
+              />
+            </Col>
+          );
+      }
+
+      seats.push(<Row key={i}>{rowSeats}</Row>);
+    }
+
+    return seats;
+  };
+
+  return (
+    <div>
+      <Container className="seats-container">
+        <Row className="seats-number-row">
+          {numbers.map((number) => (
+            <Col key={number}>{number}</Col>
+          ))}
+        </Row>
+        {renderSeats()}
+      </Container>
+    </div>
+  );
+}

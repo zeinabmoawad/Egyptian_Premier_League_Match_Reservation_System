@@ -1,0 +1,17 @@
+.seats-container {
+  width: fit-content !important;
+  background-color: transparent;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+.seats-number-row div:first-child {
+  color: transparent;
+}
+
+.seats-col {
+  padding: 0 !important;
+}
+.row > * {
+  padding: 1px !important;
+}
