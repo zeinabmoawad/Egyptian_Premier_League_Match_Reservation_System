@@ -1,27 +1,27 @@
 import React from "react";
 import "./ViewMatches.css";
-import AlAhly from "../../../Assets/teams logos 30x30/01.png";
-import CCleopatra from "../../../Assets/teams logos 30x30/02.png";
-import NationalBankOfEgypt from "../../../Assets/teams logos 30x30/03.png";
-import ElMasry from "../../../Assets/teams logos 30x30/04.png";
-import ElMokawloonSC from "../../../Assets/teams logos 30x30/05.png";
-import Aswan from "../../../Assets/teams logos 30x30/06.png";
-import ZamalekSC from "../../../Assets/teams logos 30x30/07.png";
-import Pyramids from "../../../Assets/teams logos 30x30/08.png";
-import Smouha from "../../../Assets/teams logos 30x30/09.png";
-import Enppi from "../../../Assets/teams logos 30x30/10.png";
-import Ismaily from "../../../Assets/teams logos 30x30/11.png";
-import ElGouna from "../../../Assets/teams logos 30x30/12.png";
-import ElEntagElHarby from "../../../Assets/teams logos 30x30/13.png";
-import ElMakassa from "../../../Assets/teams logos 30x30/14.png";
-import WadiDegla from "../../../Assets/teams logos 30x30/15.png";
-import ElEttahad from "../../../Assets/teams logos 30x30/16.png";
-import TalaeaElGaishSC from "../../../Assets/teams logos 30x30/17.png";
-import GhazlElMahalla from "../../../Assets/teams logos 30x30/18.png";
+import AlAhly from "../../Assets/teams logos 30x30/01.png";
+import CCleopatra from "../../Assets/teams logos 30x30/02.png";
+import NationalBankOfEgypt from "../../Assets/teams logos 30x30/03.png";
+import ElMasry from "../../Assets/teams logos 30x30/04.png";
+import ElMokawloonSC from "../../Assets/teams logos 30x30/05.png";
+import Aswan from "../../Assets/teams logos 30x30/06.png";
+import ZamalekSC from "../../Assets/teams logos 30x30/07.png";
+import Pyramids from "../../Assets/teams logos 30x30/08.png";
+import Smouha from "../../Assets/teams logos 30x30/09.png";
+import Enppi from "../../Assets/teams logos 30x30/10.png";
+import Ismaily from "../../Assets/teams logos 30x30/11.png";
+import ElGouna from "../../Assets/teams logos 30x30/12.png";
+import ElEntagElHarby from "../../Assets/teams logos 30x30/13.png";
+import ElMakassa from "../../Assets/teams logos 30x30/14.png";
+import WadiDegla from "../../Assets/teams logos 30x30/15.png";
+import ElEttahad from "../../Assets/teams logos 30x30/16.png";
+import TalaeaElGaishSC from "../../Assets/teams logos 30x30/17.png";
+import GhazlElMahalla from "../../Assets/teams logos 30x30/18.png";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaLocationDot } from "react-icons/fa6";
-
-export default function ViewMatches() {
+import CreateMatches from"../CreateMatches/CreateMatches.jsx"
+export default function ViewMatches(props) {
   const teamsLogos = {
     "Al-Ahly": AlAhly,
     "C. Cleopatra": CCleopatra,
@@ -42,6 +42,28 @@ export default function ViewMatches() {
     "El-Masry": ElMasry,
     "National Bank Of Egypt": NationalBankOfEgypt,
   };
+  // const [matches, setMatches] = useState([]);
+  // useEffect(() => {
+  //   // Fetch match data
+  //   axios.get("your_endpoint_url")
+  //     .then(response => {
+  //       setMatches(response.data.matches);
+  //     })
+  //     .catch(error => {
+  //       console.error("Error fetching match data:", error);
+  //     });
+
+  //   // Fetch teams logos data
+  //   axios.get("your_teams_logos_endpoint_url")
+  //     .then(response => {
+  //       setTeamsLogos(response.data.teamsLogos);
+  //     })
+  //     .catch(error => {
+  //       console.error("Error fetching teams logos data:", error);
+  //     });
+  // }, []);
+
+
   var matches = [
     {
       team1: "Wadi Degla",
@@ -75,14 +97,41 @@ export default function ViewMatches() {
       location: "Cairo Stadium 3, Cairo",
       referee: "refereeI",
     },
+    {
+      team1: "Al-Ahly",
+      team2: "C. Cleopatra",
+      time: "09:00",
+      day: "Aug 27, 2024",
+      location: "Aswan Stadium 8, Aswan",
+      referee: "refereeS",
+    },
+    {
+      team1: "El-Makassa",
+      team2: "Wadi Degla",
+      time: "07:00",
+      day: "Mar 10, 2024",
+      location: "Ismailia Stadium 18, Ismailia",
+      referee: "refereeN",
+    },
+    {
+      team1: "Smouha",
+      team2: "Enppi",
+      time: "11:00",
+      day: "Feb 8, 2024",
+      location: "Cairo Stadium 3, Cairo",
+      referee: "refereeI",
+    }
+    
   ];
   return (
     <div>
       <Container className="matches-container">
         <Row className="matches-header">
-          <Col>
+          <Col className="matches-header-column">
             <h1>Matches</h1>
+            {props.userType=="FEA"&&(<CreateMatches></CreateMatches>)}
           </Col>
+          
         </Row>
         <Row className="matches">
           {matches.map((item, i) => (

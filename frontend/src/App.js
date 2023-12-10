@@ -3,12 +3,12 @@ import './App.css';
 import HomePage from"./Components/Home/Home.jsx"
 import Signup from"./Components/Signup/Signup.jsx"
 import Login from './Components/LoginSignup/LoginSignup';
-import MatcchesView from './Components/Matches/View/ViewMatches/ViewMatches.jsx'
+import MatcchesView from './Components/Matches/ViewMatches/ViewMatches.jsx'
 function App() {
   return (
 
     <div className="App">
-      <MatcchesView></MatcchesView>
+      <MatcchesView userType="FEA"></MatcchesView>
       {/* <Router>
       <div>
        <Routes>

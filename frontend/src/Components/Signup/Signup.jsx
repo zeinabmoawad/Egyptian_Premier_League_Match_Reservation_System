@@ -17,6 +17,8 @@ const Signup = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        console.log('Form submitted:', formData);
+
     };
 
     const handleSubmit = async (e) => {
@@ -34,7 +36,6 @@ const Signup = () => {
     };
     return (
         <div className={classes.form_container}>
-
             <form onSubmit={handleSubmit}>
                 <h2>Create Account</h2>
                 <div className={classes.signinlink}>
