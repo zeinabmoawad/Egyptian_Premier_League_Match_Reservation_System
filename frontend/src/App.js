@@ -6,12 +6,12 @@ import UserProfileCard from "./Components/UserProfileCard/UserProfileCard";
 import Seats from "./Components/seats/seats";
 import Seat from "./Components/seats/seat";
 import { Col } from "react-bootstrap";
-
+import ViewMatches from './Components/Matches/ViewMatches/ViewMatches'
 function App() {
   const seats = [1, 2, 3, 4, 5];
   return (
     <div className="App">
-      <MatcchesView userType="FEA"></MatcchesView>
+      <ViewMatches userType="FEA"></ViewMatches>
       {/* <Router>
       <div>
        <Routes>
