@@ -11,8 +11,8 @@ import ViewStadium from'./Components/Stadium/ViewStadium/ViewStadium'
 function App() {
   return (
     <div className="App">
-      <ViewStadium userType="FEA"></ViewStadium>
-      {/* <ViewMatches userType="FEA"></ViewMatches> */}
+      {/* <ViewStadium userType="FEA"></ViewStadium> */}
+      <ViewMatches userType="FEA"></ViewMatches>
       {/* <Router>
       <div>
        <Routes>
