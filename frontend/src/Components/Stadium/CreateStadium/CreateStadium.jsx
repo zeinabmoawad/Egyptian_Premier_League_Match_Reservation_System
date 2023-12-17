@@ -10,7 +10,7 @@ const CreateStadium = () => {
     const [formData, setFormData] = useState({
         Name:'',
         Row: 0,
-        column:0,
+        Column:0,
     });
 
     const togglePopup = () => {
@@ -45,11 +45,12 @@ const CreateStadium = () => {
 
     return (
         <div>
-            <button className={classes.popup_button} onClick={togglePopup}>Add</button>
+            <Button className={classes.popup_button} variant="success"onClick={togglePopup}>Add</Button>
+
             {isPopupVisible && (
                 <div className={classes.popup}>
                     {/* <div className="popup-content"> */}
-                    <div className={classes.headers}> <h3>Fill Matche Details</h3>
+                    <div className={classes.headers}> <h3>Fill Stadium Details</h3>
                         <button className={classes.close_button} onClick={togglePopup}>
                             <BiX />
                         </button></div>
@@ -61,7 +62,7 @@ const CreateStadium = () => {
                                     Name:
                                     <input
                                         type="text"
-                                        name="name"
+                                        name="Name"
                                         value={formData.Name}
                                         onChange={handleChange}
                                     />
@@ -83,14 +84,13 @@ const CreateStadium = () => {
                                     type="number"
                                     name="Column"
                                     min="0"
-                                    value={formData.column}
+                                    value={formData.Column}
                                     onChange={handleChange}
                                 />
                             </label></div>
                            </div>      
                             </div>
-                             <button className={classes.sumbit_button} type="submit">Submit</button>
-                             {/* <Button className={classes.sumbit_button} type="submit" variant="outline-success">Submit</Button>{' '} */}
+                             <Button className={classes.sumbit_button} type="submit" variant="success">Submit</Button>
 
                             </div>
                         </form>

@@ -1,5 +1,7 @@
 import classes from './CreateMatches.module.css'
 import { BiCalendar, BiCheck, BiX } from 'react-icons/bi';
+import Button from 'react-bootstrap/Button';
+
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -47,7 +49,9 @@ const CreateMatches = () => {
 
     return (
         <div>
-            <button className={classes.popup_button} onClick={togglePopup}>Add</button>
+            {/* <button className={classes.popup_button} onClick={togglePopup}>Add</button> */}
+            <Button className={classes.popup_button} variant="success"onClick={togglePopup}>Add</Button>
+
             {isPopupVisible && (
                 <div className={classes.popup}>
                     {/* <div className="popup-content"> */}
@@ -128,8 +132,9 @@ const CreateMatches = () => {
                             </label></div>
                             </div>
                             </div>
-                             <button className={classes.sumbit_button} type="submit">Submit</button>
-                          
+                             {/* <button className={classes.sumbit_button} type="submit">Submit</button> */}
+                             <Button className={classes.sumbit_button} type="submit" variant="success">Submit</Button>
+
                             </div>
                         </form>
                     
