@@ -24,6 +24,8 @@ import CreateMatches from "../CreateMatches/CreateMatches.jsx"
 import EditMatches from "../EditMatches/EditMatches.jsx";
 import DeletePopUp from "../../User/DeleteUser/DeletePopup/DeletePopUp.jsx";
 import ApproveUser from "../../User/Requests/ApproveOrDisApprove/ApproveUser.jsx";
+import DisApproveUser from "../../User/Requests/ApproveOrDisApprove/DisApproveUser.jsx";
+
 export default function ViewMatches(props) {
   const teamsLogos = {
     "Al-Ahly": AlAhly,
@@ -142,7 +144,7 @@ export default function ViewMatches(props) {
               <div className="match">
                 {/* <div><DeletePopUp></DeletePopUp></div> */}
                 {/* <div><EditMatches></EditMatches></div> */}
-                <div><ApproveUser></ApproveUser></div>
+                <div><DisApproveUser></DisApproveUser></div>
                 <div className="match-teams">
                   <div className="match-team match-team-left">
                     <img src={teamsLogos[item.team1]} alt="" />

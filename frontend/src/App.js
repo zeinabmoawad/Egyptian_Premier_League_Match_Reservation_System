@@ -13,8 +13,8 @@ import DeleteUser from "./Components/User/DeleteUser/DeleteUser";
 function App() {
   return (
     <div className="App">
-      <DeleteUser />
-      {/* <ViewMatches userType="FEA"></ViewMatches> */}
+      {/* <DeleteUser /> */}
+      <ViewMatches userType="FEA"></ViewMatches>
       {/* <Router>
       <div>
        <Routes>
