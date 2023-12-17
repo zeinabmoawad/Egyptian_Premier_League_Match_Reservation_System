@@ -1,8 +1,46 @@
 .popup {
   background-color: #fff; /* Replace with your desired background color */
-  padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a box shadow for a 3D effect */
   width: 400px;
-  height: 350px;
+  height: fit-content;
+}
+.popup h1 {
+  border-bottom: 1px solid gray;
+  padding: 20px;
+}
+.popup h6 {
+  font-size: 14px;
+  color: #6d6d6d;
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+.popup-inputs {
+  padding: 20px;
+}
+.popup-inputs input {
+  height: 50px;
+  border: 2px solid rgb(2, 83, 212);
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  font-weight: 700;
+}
+.popup-inputs input:focus {
+  background-color: rgba(108, 183, 215, 0.433);
+  border-color: blue;
+}
+.popup-inputs h4 {
+  font-weight: 700;
+}
+.popup button {
+  float: right;
+  margin: 20px 10px;
+}
+.popup .error-message {
+  font-size: 10px;
+  font-weight: 700;
+  color: red;
+  padding: 0;
+  margin: 0;
 }
