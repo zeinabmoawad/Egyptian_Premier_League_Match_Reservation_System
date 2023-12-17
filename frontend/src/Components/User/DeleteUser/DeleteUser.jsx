@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./DeleteUser.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaUser, FaTransgender, FaBirthdayCake } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
+import User from "../User";
 
 export default function DeleteUser() {
   // const [matches, setMatches] = useState([]);
@@ -42,36 +40,12 @@ export default function DeleteUser() {
       <Container className="matches-container">
         <Row className="matches-header">
           <Col className="matches-header-column">
-            <h1>Tickets</h1>
+            <h1>Users</h1>
           </Col>
         </Row>
         <Row className="matches justify-content-start">
           {users.map((item, i) => (
-            <Col md={3} key={i}>
-              <div className="delete-user">
-                <FaUser className="delete-user-icon" />
-                <p className="delete-user-name">{item.name}</p>
-                <p className="delete-user-username">{item.username}</p>
-                <p className="delete-user-location">
-                  <FaLocationDot />
-                  {item.location}
-                </p>
-                <p className="delete-user-email">
-                  <MdOutlineEmail />
-                  {item.email}
-                </p>
-                <div className="delete-user-info">
-                  <p>
-                    <FaTransgender />
-                    {item.gender}
-                  </p>
-                  <p>
-                    <FaBirthdayCake />
-                    {item.birthdate}
-                  </p>
-                </div>
-              </div>
-            </Col>
+            <User user={item} key={i} />
           ))}
         </Row>
       </Container>

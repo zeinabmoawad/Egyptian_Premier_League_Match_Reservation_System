@@ -39,3 +39,6 @@
   display: flex;
   justify-content: space-around;
 }
+.delete-user-p-icon {
+  margin-right: 5px;
+}
