@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import "./DeleteUser.css";
+// import "./UserRequest.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaUser, FaTransgender, FaBirthdayCake } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import User from "../User";
+import Slider from "react-slick";
+import ApproveUser from "./ApproveOrDisApprove/ApproveUser";
+import "./UserRequest.css";
 
-export default function DeleteUser() {
+export default function UserRequest() {
   // const [matches, setMatches] = useState([]);
   // useEffect(() => {
   //   // Fetch match data
@@ -37,18 +40,46 @@ export default function DeleteUser() {
       gender: "Female",
       birthdate: "Jan 18,2003",
     },
+    {
+      name: "Menatalh Hossamalden",
+      username: "@mena1234",
+      location: "Street 9 - Block 10 A Upper Egypt, Cairo",
+      email: "menatalh@gmail.com",
+      gender: "Female",
+      birthdate: "Jan 18,2003",
+    },
+    {
+      name: "Menatalh Hossamalden",
+      username: "@mena1234",
+      location: "Street 9 - Block 10 A Upper Egypt, Cairo",
+      email: "menatalh@gmail.com",
+      gender: "Female",
+      birthdate: "Jan 18,2003",
+    },
   ]);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <div>
       <Container className="matches-container">
         <Row className="matches-header">
           <Col className="matches-header-column">
-            <h1>Tickets</h1>
+            <h1>Requests</h1>
           </Col>
         </Row>
         <Row className="matches justify-content-start">
           {users.map((item, i) => (
-            <User user={item}></User>
+            <Col md={3} className="request-user">
+              <div className="request-user-icon">
+                <ApproveUser />
+              </div>
+              <User user={item} key={i}></User>
+            </Col>
           ))}
         </Row>
       </Container>
