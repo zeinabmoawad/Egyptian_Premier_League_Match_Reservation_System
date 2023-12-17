@@ -15,7 +15,7 @@
   display: block;
   margin-bottom: 0.5rem;
 }
-button[type="submit"] {
+.profileContainer button[type="submit"] {
   background-color: #441b74;
   color: #fff;
   border: none;
