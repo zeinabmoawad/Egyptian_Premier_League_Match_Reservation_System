@@ -1,0 +1,133 @@
+.stadiumes-container {
+  background-color: #f5f8f9;
+  width: 100%;
+  /* align-items: center; */
+  /* margin: auto; */
+}
+.stadiumes-header {
+
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.8)),
+              url("../Assets/images/Stadium1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  height: 480px;
+  width: 90%;
+  margin-left: 3%;
+  margin-top: 25px;
+  position: relative;
+  text-align: left;
+  color: white;
+  align-items: center;
+  font-size: 23px;
+  font-weight: 500;
+  padding-left: 25px;
+  text-shadow: 2px 2px 8px #312f2f;
+  /* background-color: red; */
+}
+.stadiumes-header-column{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+  /* background-color: #210155; */
+  color: white;
+
+}
+.stadiumes{
+  width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: white;
+
+}
+.stadium {
+  background-image: url("../Assets/images/Stadium.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* width: 25%; */
+  padding: 25px;
+  border-radius: 20px;
+  margin-top: 20px;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 230px;
+  text-align: center;
+}
+/* .stadium img {
+  width: 100px;
+  height: 50px;
+} */
+.stadium-teams {
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: small;
+  color: white;
+
+}
+.stadium-team {
+  width: 75px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+
+}
+.stadium-team p {
+  margin-bottom: 0;
+  color: white;
+
+}
+.stadium-day-time p {
+  margin-bottom: 0;
+  color: white;
+
+}
+.stadium-time {
+  font-size: x-large;
+  font-weight: 700;
+  color: white;
+
+}
+.stadium-day {
+  font-size: xx-small;
+  color: white;
+
+}
+.stadium-location {
+  font-size: smaller;
+  color: white;
+
+}
+.stadium-location p {
+  margin-bottom: 0;
+  color: white;
+
+}
+.stadiumes-header h1{
+  margin-bottom: 20%;
+}
+.stadiumes p{
+
+  font-size: 30px;
+  
+}
+/* .stadium-seats{
+  background-color: red;
+  width: 100%;
+} */
