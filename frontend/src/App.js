@@ -7,7 +7,6 @@ import Seats from "./Components/seats/seats";
 import Seat from "./Components/seats/seat";
 import ViewMatches from "./Components/Matches/ViewMatches/ViewMatches";
 import { Col } from "react-bootstrap";
-import ViewMatches from './Components/Matches/ViewMatches/ViewMatches'
 import ViewStadium from'./Components/Stadium/ViewStadium'
 function App() {
   return (
