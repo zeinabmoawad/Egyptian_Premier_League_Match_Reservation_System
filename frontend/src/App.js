@@ -10,11 +10,12 @@ import ViewMatches from "./Components/Matches/ViewMatches/ViewMatches";
 import ViewStadium from "./Components/Stadium/ViewStadium/ViewStadium";
 import ViewTickets from "./Components/ViewTickets/ViewTickets";
 import DeleteUser from "./Components/User/DeleteUser/DeleteUser";
+import UserRequest from "./Components/User/Requests/UserRequest";
 function App() {
   return (
     <div className="App">
-      {/* <DeleteUser /> */}
-      <ViewMatches userType="FEA"></ViewMatches>
+      <UserRequest />
+      {/* <ViewMatches userType="FEA"></ViewMatches> */}
       {/* <Router>
       <div>
        <Routes>
