@@ -1,0 +1,9 @@
+.request-user {
+  position: relative;
+}
+.request-user-icon {
+  position: absolute;
+  right: 23px;
+  top: 23px;
+  font-size: 23px;
+}
