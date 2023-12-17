@@ -20,8 +20,10 @@ import TalaeaElGaishSC from "../../Assets/teams logos 30x30/17.png";
 import GhazlElMahalla from "../../Assets/teams logos 30x30/18.png";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaLocationDot } from "react-icons/fa6";
-import CreateMatches from"../CreateMatches/CreateMatches.jsx"
+import CreateMatches from "../CreateMatches/CreateMatches.jsx"
 import EditMatches from "../EditMatches/EditMatches.jsx";
+import DeletePopUp from "../../User/DeleteUser/DeletePopup/DeletePopUp.jsx";
+import ApproveUser from "../../User/Requests/ApproveOrDisApprove/ApproveUser.jsx";
 export default function ViewMatches(props) {
   const teamsLogos = {
     "Al-Ahly": AlAhly,
@@ -122,7 +124,7 @@ export default function ViewMatches(props) {
       location: "Cairo Stadium 3, Cairo",
       referee: "refereeI",
     }
-    
+
   ];
   return (
     <div>
@@ -130,16 +132,17 @@ export default function ViewMatches(props) {
         <Row className="matches-header">
           <Col className="matches-header-column">
             <h1>Matches</h1>
-            {props.userType=="FEA"&&(<CreateMatches></CreateMatches>)}
+            {props.userType == "FEA" && (<CreateMatches></CreateMatches>)}
           </Col>
-          
+
         </Row>
         <Row className="matches justify-content-start">
           {matches.map((item, i) => (
             <Col md={3} key={i}>
               <div className="match">
-              <div><EditMatches></EditMatches></div>
-
+                {/* <div><DeletePopUp></DeletePopUp></div> */}
+                {/* <div><EditMatches></EditMatches></div> */}
+                <div><ApproveUser></ApproveUser></div>
                 <div className="match-teams">
                   <div className="match-team match-team-left">
                     <img src={teamsLogos[item.team1]} alt="" />
