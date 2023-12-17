@@ -1,0 +1,41 @@
+.delete-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-shadow: none;
+  background-color: rgb(193, 193, 37);
+  border-radius: 23px;
+  padding: 23px;
+  margin-top: 23px;
+}
+.delete-user-icon {
+  font-size: 33px;
+  margin-bottom: 23px;
+}
+.delete-user-name {
+  font-size: 23px;
+  font-weight: 46px;
+  padding: 0;
+  margin: 0;
+}
+.delete-user-username {
+  font-size: 10px;
+  font-weight: 46px;
+  padding: 0;
+  margin: 0;
+}
+.delete-user-location,
+.delete-user-email,
+.delete-user-info {
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-size: 10px;
+  font-weight: 700;
+}
+.delete-user-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

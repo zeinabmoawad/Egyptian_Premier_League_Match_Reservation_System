@@ -9,10 +9,11 @@ import { Col } from "react-bootstrap";
 import ViewMatches from "./Components/Matches/ViewMatches/ViewMatches";
 import ViewStadium from "./Components/Stadium/ViewStadium/ViewStadium";
 import ViewTickets from "./Components/ViewTickets/ViewTickets";
+import DeleteUser from "./Components/User/DeleteUser/DeleteUser";
 function App() {
   return (
     <div className="App">
-      <ViewTickets></ViewTickets>
+      <DeleteUser />
       {/* <ViewMatches userType="FEA"></ViewMatches> */}
       {/* <Router>
       <div>
