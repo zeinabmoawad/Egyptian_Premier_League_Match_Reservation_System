@@ -1,16 +1,14 @@
 .matches-container {
   background-color: #f5f8f9;
   width: 100%;
-  /* align-items: center; */
-  /* margin: auto; */
 }
 .matches-header {
-  background-image: url("../../Assets/images/football-team.jpg");
+  background-image: url("../../Assets/images/Fans.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 30px;
-  height: 480px;
+  height: 450px;
   width: 90%;
   margin-left: 3%;
   margin-top: 25px;
@@ -24,6 +22,7 @@
   text-shadow: 2px 2px 8px #312f2f;
   width: inherit;
   margin: 0;
+  margin-top: 23px;
 }
 .matches-header-column {
   height: 100%;
@@ -42,7 +41,7 @@
   text-shadow: 2px 2px 8px black;
 }
 .match {
-  background-color: #a3abab;
+  background-color: #d1c59f;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

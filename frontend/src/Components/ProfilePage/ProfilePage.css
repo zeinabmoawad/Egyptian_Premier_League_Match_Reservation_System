@@ -24,8 +24,8 @@
   cursor: pointer;
 }
 
-button[type="submit"]:hover,
-button[type="submit"]:focus,
-button[type="submit"]:active {
+.profileContainer button[type="submit"]:hover,
+.profileContainer button[type="submit"]:focus,
+.profileContainer button[type="submit"]:active {
   background-color: #1b0732;
 }
