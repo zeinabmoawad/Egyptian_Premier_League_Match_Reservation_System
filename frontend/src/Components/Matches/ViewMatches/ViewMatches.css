@@ -31,12 +31,9 @@
   flex-direction: column;
   justify-content: space-around;
   align-content: space-around;
-  /* background-color: #210155; */
   color: white;
 }
 .matches {
-  width: 100%;
-  /* background-color: red; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -101,4 +98,5 @@
 .match-location p {
   margin-bottom: 0;
   color: white;
+  text-align: center;
 }
