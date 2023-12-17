@@ -8,10 +8,11 @@ import Seat from "./Components/seats/seat";
 import { Col } from "react-bootstrap";
 import ViewMatches from "./Components/Matches/ViewMatches/ViewMatches";
 import ViewStadium from "./Components/Stadium/ViewStadium/ViewStadium";
+import ViewTickets from "./Components/ViewTickets/ViewTickets";
 function App() {
   return (
     <div className="App">
-      <ViewMatches userType="FEA"></ViewMatches>
+      <ViewTickets></ViewTickets>
       {/* <ViewMatches userType="FEA"></ViewMatches> */}
       {/* <Router>
       <div>
