@@ -133,7 +133,7 @@ export default function ViewMatches(props) {
           </Col>
           
         </Row>
-        <Row className="matches">
+        <Row className="matches justify-content-start">
           {matches.map((item, i) => (
             <Col md={3} key={i}>
               <div className="match">

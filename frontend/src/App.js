@@ -5,11 +5,11 @@ import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import UserProfileCard from "./Components/UserProfileCard/UserProfileCard";
 import Seats from "./Components/seats/seats";
 import Seat from "./Components/seats/seat";
+import ViewMatches from "./Components/Matches/ViewMatches/ViewMatches";
 import { Col } from "react-bootstrap";
 import ViewMatches from './Components/Matches/ViewMatches/ViewMatches'
 import ViewStadium from'./Components/Stadium/ViewStadium'
 function App() {
-  const seats = [1, 2, 3, 4, 5];
   return (
     <div className="App">
       <ViewStadium></ViewStadium>
@@ -23,7 +23,7 @@ function App() {
           </Routes>
       </div>
     </Router> */}
-     </div>
+    </div>
   );
 }
 

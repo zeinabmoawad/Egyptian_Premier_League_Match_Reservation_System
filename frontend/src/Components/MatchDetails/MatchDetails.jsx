@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MatchDetails.css";
 import Seats from "../seats/seats";
 import Ticket from "./Ticket";
@@ -7,6 +7,7 @@ import field from "../Assets/field.png";
 import AlAhly from "../Assets/teams logos 240x240/01.png";
 import WadiDegla from "../Assets/teams logos 240x240/15.png";
 import DeleteTicketPopUp from "./deleteTicketPopUp";
+
 export default function MatchDetails() {
   const [columns, setColumns] = useState(5);
   const [rows, setRows] = useState(5);
@@ -26,11 +27,27 @@ export default function MatchDetails() {
       prevSelectedSeats.filter((id) => id !== label)
     );
   }
+
+  // useEffect(() => {
+  //   const socket = new WebSocket("http://localhost:3000");
+  //   socket.onmessage = (event) => {
+  //     const receivedMessage = event.data;
+  //     setSelectedSeats(receivedMessage);
+  //   };
+  //   return () => {
+  //     // Clean up the WebSocket connection when the component unmounts
+  //     socket.close();
+  //   };
+  // }, []);
+
   return (
     <div className="match-details">
       {purchase ? (
         <div className="overlay">
-          <DeleteTicketPopUp price={100} />
+          <DeleteTicketPopUp
+            price={selectedSeats.length * 200}
+            closeWindow={setPurchase}
+          />
         </div>
       ) : null}
       <Container className="container-fluid match-details-container">
