@@ -1,18 +1,16 @@
-import classes from './CreateMatches.module.css'
+import classes from './CreateStadium.module.css'
 import { BiCalendar, BiCheck, BiX } from 'react-icons/bi';
+import Button from 'react-bootstrap/Button';
+
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreateMatches = () => {
+const CreateStadium = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [formData, setFormData] = useState({
-        homeTeam: '',
-        awayTeam: '',
-        matchVenue: '',
-        dateTime: '',
-        mainReferee: '',
-        linesman1: '',
-        linesman2: '',
+        Name:'',
+        Row: 0,
+        column:0,
     });
 
     const togglePopup = () => {
@@ -60,76 +58,40 @@ const CreateMatches = () => {
                         <div className={classes.form_columns}>
                             <div className={classes.column1}>
                                 <div><label>
-                                    Home Team:
+                                    Name:
                                     <input
                                         type="text"
-                                        name="homeTeam"
-                                        value={formData.homeTeam}
+                                        name="name"
+                                        value={formData.Name}
                                         onChange={handleChange}
                                     />
                                 </label></div>
                                 <div> <label>
-                                Away Team:
+                                Row:
                                 <input
-                                    type="text"
-                                    name="awayTeam"
-                                    value={formData.awayTeam}
+                                    type="number"
+                                    name="Row"
+                                    min="0"
+                                    value={formData.Row}
                                     onChange={handleChange}
                                 />
                             </label></div>
 
                             <div> <label>
-                                Match Venue:
+                                 Column:
                                 <input
-                                    type="text"
-                                    name="matchVenue"
-                                    value={formData.matchVenue}
+                                    type="number"
+                                    name="Column"
+                                    min="0"
+                                    value={formData.column}
                                     onChange={handleChange}
                                 />
                             </label></div>
-                            <div><label>
-                                Date & Time:
-                                <input
-                                    type="datetime-local"
-                                    name="dateTime"
-                                    value={formData.dateTime}
-                                    onChange={handleChange}
-                                />
-                            </label></div></div>
-                            <div className={classes.column2}>
-                                <div> <label>
-                                    Main Referee:
-                                    <input
-                                        type="text"
-                                        name="mainReferee"
-                                        value={formData.mainReferee}
-                                        onChange={handleChange}
-                                    />
-                                </label></div>
-                                
-                            <div><label>
-                                Linesman 1:
-                                <input
-                                    type="text"
-                                    name="linesman1"
-                                    value={formData.linesman1}
-                                    onChange={handleChange}
-                                />
-                            </label></div>
-
-                            <div> <label>
-                                Linesman 2:
-                                <input
-                                    type="text"
-                                    name="linesman2"
-                                    value={formData.linesman2}
-                                    onChange={handleChange}
-                                />
-                            </label></div>
-                            </div>
+                           </div>      
                             </div>
                              <button className={classes.sumbit_button} type="submit">Submit</button>
-                          
+                             {/* <Button className={classes.sumbit_button} type="submit" variant="outline-success">Submit</Button>{' '} */}
+
                             </div>
                         </form>
                     
@@ -139,5 +101,5 @@ const CreateMatches = () => {
     );
 };
 
-export default CreateMatches;
+export default CreateStadium;
 

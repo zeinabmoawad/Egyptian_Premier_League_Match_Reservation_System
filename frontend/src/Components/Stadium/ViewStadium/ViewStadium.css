@@ -7,7 +7,7 @@
 .stadiumes-header {
 
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.8)),
-              url("../Assets/images/Stadium1.jpg");
+              url("../../Assets/images/Stadium1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -47,7 +47,7 @@
 
 }
 .stadium {
-  background-image: url("../Assets/images/Stadium.jpg");
+  background-image: url("../../Assets/images/Stadium.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

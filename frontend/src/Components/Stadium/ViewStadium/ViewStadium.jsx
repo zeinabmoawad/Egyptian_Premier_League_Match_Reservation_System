@@ -1,7 +1,8 @@
 import React from 'react'
+
 import "./ViewStadium.css";
 import { Container, Row, Col } from "react-bootstrap";
-
+import CreateStadium from '../CreateStadium/CreateStadium'
 var stadiumes = [
   {
     Name: "Cairo",
@@ -30,14 +31,14 @@ var stadiumes = [
   },
 
 ];
-function ViewStadium() {
+function ViewStadium(props) {
   return (
     <div>
       <Container className="stadiumes-container">
         <Row className="stadiumes-header">
           <Col className="stadiumes-header-column">
             <h1>Stadium</h1>
-            {/* {props.userType=="FEA"&&(<Createstadiumes></Createstadiumes>)} */}
+            {props.userType=="FEA"&&(<CreateStadium></CreateStadium>)}
           </Col>
         </Row>
         <Row className="stadiumes">

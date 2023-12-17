@@ -5,14 +5,13 @@ import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import UserProfileCard from "./Components/UserProfileCard/UserProfileCard";
 import Seats from "./Components/seats/seats";
 import Seat from "./Components/seats/seat";
-import ViewMatches from "./Components/Matches/ViewMatches/ViewMatches";
 import { Col } from "react-bootstrap";
 import ViewMatches from './Components/Matches/ViewMatches/ViewMatches'
-import ViewStadium from'./Components/Stadium/ViewStadium'
+import ViewStadium from'./Components/Stadium/ViewStadium/ViewStadium'
 function App() {
   return (
     <div className="App">
-      <ViewStadium></ViewStadium>
+      <ViewStadium userType="FEA"></ViewStadium>
       {/* <ViewMatches userType="FEA"></ViewMatches> */}
       {/* <Router>
       <div>
