@@ -28,17 +28,17 @@ export default function MatchDetails() {
     );
   }
 
-  useEffect(() => {
-    const socket = new WebSocket("server url");
-    socket.onmessage = (event) => {
-      const receivedMessage = event.data;
-      setSelectedSeats(receivedMessage);
-    };
-    return () => {
-      // Clean up the WebSocket connection when the component unmounts
-      socket.close();
-    };
-  }, []);
+  // useEffect(() => {
+  //   const socket = new WebSocket("http://localhost:3000");
+  //   socket.onmessage = (event) => {
+  //     const receivedMessage = event.data;
+  //     setSelectedSeats(receivedMessage);
+  //   };
+  //   return () => {
+  //     // Clean up the WebSocket connection when the component unmounts
+  //     socket.close();
+  //   };
+  // }, []);
 
   return (
     <div className="match-details">
