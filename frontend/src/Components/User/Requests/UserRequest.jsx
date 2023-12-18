@@ -7,8 +7,8 @@ import { MdOutlineEmail } from "react-icons/md";
 import User from "../User";
 import Slider from "react-slick";
 import ApproveUser from "./ApproveOrDisApprove/ApproveUser";
+import DisApproveUser from "./ApproveOrDisApprove/DisApproveUser";
 import "./UserRequest.css";
-
 
 export default function UserRequest() {
   // const [matches, setMatches] = useState([]);
@@ -76,8 +76,11 @@ export default function UserRequest() {
         <Row className="matches justify-content-start">
           {users.map((item, i) => (
             <Col md={3} className="request-user">
-              <div className="request-user-icon">
+              <div className="request-user-icon-approve">
                 <ApproveUser />
+              </div>
+              <div className="request-user-icon-disapprove">
+                <DisApproveUser />
               </div>
               <User user={item} key={i}></User>
             </Col>
