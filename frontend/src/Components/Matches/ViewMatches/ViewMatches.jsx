@@ -20,7 +20,7 @@ import TalaeaElGaishSC from "../../Assets/teams logos 30x30/17.png";
 import GhazlElMahalla from "../../Assets/teams logos 30x30/18.png";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaLocationDot } from "react-icons/fa6";
-import CreateMatches from "../CreateMatches/CreateMatches.jsx"
+import CreateMatches from "../CreateMatches/CreateMatches.jsx";
 import EditMatches from "../EditMatches/EditMatches.jsx";
 import DeletePopUp from "../../User/DeleteUser/DeletePopup/DeletePopUp.jsx";
 import ApproveUser from "../../User/Requests/ApproveOrDisApprove/ApproveUser.jsx";
@@ -67,7 +67,6 @@ export default function ViewMatches(props) {
   //       console.error("Error fetching teams logos data:", error);
   //     });
   // }, []);
-
 
   var matches = [
     {
@@ -126,45 +125,49 @@ export default function ViewMatches(props) {
       day: "Feb 8, 2024",
       location: "Cairo Stadium 3, Cairo",
       referee: "refereeI",
-    }
-
+    },
   ];
+  const handleChildClick = (event) => {
+    event.stopPropagation();
+  };
+
   return (
     <div>
       <Container className="matches-container">
         <Row className="matches-header">
           <Col className="matches-header-column">
             <p>Matches</p>
-            {props.userType == "FEA" && (<CreateMatches></CreateMatches>)}
+            {props.userType == "FEA" && <CreateMatches></CreateMatches>}
           </Col>
-
         </Row>
         <Row className="matches justify-content-start">
           {matches.map((item, i) => (
             <Col md={3} key={i}>
-              <a href={/MatchDetails/+i}>
-              <div className="match" >
+              <div className="match">
                 {/* <div><DeletePopUp></DeletePopUp></div> */}
-                {/* <div><EditMatches></EditMatches></div> */}
-                <div className="match-teams">
-                  <div className="match-team match-team-left">
-                    <img src={teamsLogos[item.team1]} alt="" />
-                    <p>{item.team1}</p>
-                  </div>
-                  <div className="match-day-time">
-                    <p className="match-time">{item.time}</p>
-                    <p className="match-day">{item.day}</p>
-                  </div>
-                  <div className="match-team match-team-right">
-                    <img src={teamsLogos[item.team2]} alt="" />
-                    <p>{item.team2}</p>
-                  </div>
+                <div className="view-match-edit" onClick={handleChildClick}>
+                  <EditMatches></EditMatches>
                 </div>
+                <a href={/MatchDetails/ + i}>
+                  <div className="match-teams">
+                    <div className="match-team match-team-left">
+                      <img src={teamsLogos[item.team1]} alt="" />
+                      <p>{item.team1}</p>
+                    </div>
+                    <div className="match-day-time">
+                      <p className="match-time">{item.time}</p>
+                      <p className="match-day">{item.day}</p>
+                    </div>
+                    <div className="match-team match-team-right">
+                      <img src={teamsLogos[item.team2]} alt="" />
+                      <p>{item.team2}</p>
+                    </div>
+                  </div>
                   <div className="match-location">
-                  <p>{item.referee}</p>
-                </div>
+                    <p>{item.referee}</p>
+                  </div>
+                </a>
               </div>
-              </a>
             </Col>
           ))}
         </Row>

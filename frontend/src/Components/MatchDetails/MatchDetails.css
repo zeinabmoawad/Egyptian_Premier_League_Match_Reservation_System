@@ -2,6 +2,7 @@
   background-image: url("../Assets/images/goalmatches.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  margin-top: -46px;
 }
 .match-details-container {
   text-align: center;
@@ -16,7 +17,6 @@
 .match-details-teams {
   display: flex;
   justify-content: space-around;
- 
 }
 .match-details-teams p {
   color: white;

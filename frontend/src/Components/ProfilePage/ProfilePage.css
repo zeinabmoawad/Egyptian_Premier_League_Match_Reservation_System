@@ -16,16 +16,17 @@
   margin-bottom: 0.5rem;
 }
 .profileContainer button[type="submit"] {
-  background-color: #441b74;
+  background-color: #198754;
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
   margin-top: 1rem;
+  margin-left: 0;
   cursor: pointer;
 }
 
 .profileContainer button[type="submit"]:hover,
 .profileContainer button[type="submit"]:focus,
 .profileContainer button[type="submit"]:active {
-  background-color: #1b0732;
+  background-color: #198754;
 }
