@@ -2,7 +2,6 @@ import React from "react";
 import UserProfileCard from "../UserProfileCard/UserProfileCard";
 import ProfilePage from "./ProfilePage";
 import { Container, Row, Col } from "react-bootstrap";
-import "./profile.css";
 
 export default function Profile() {
   return (

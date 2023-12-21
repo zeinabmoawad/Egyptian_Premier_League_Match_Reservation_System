@@ -153,7 +153,7 @@ export default function ViewTickets() {
       <Container className="matches-container">
         <Row className="matches-header">
           <Col className="matches-header-column">
-            <h1>Tickets</h1>
+            <p>Tickets</p>
           </Col>
         </Row>
         <Row className="matches justify-content-start">
@@ -182,10 +182,6 @@ export default function ViewTickets() {
                   </div>
                 </div>
                 <div className="match-location">
-                  <p>
-                    <FaLocationDot />
-                    {item.location}
-                  </p>
                   <p>{item.referee}</p>
                 </div>
               </div>

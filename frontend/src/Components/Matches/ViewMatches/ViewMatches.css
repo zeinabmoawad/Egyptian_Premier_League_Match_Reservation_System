@@ -3,8 +3,12 @@
   width: 100%;
 }
 .matches-header {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.8)),
-  url("../../Assets/images/Stadium1.jpg");
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.1),
+      rgba(0, 0, 0, 0.8)
+    ),
+    url("../../Assets/images/Stadium1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -12,7 +16,6 @@
   height: 450px;
   width: 90%;
   margin-left: 3%;
-  margin-top: 25px;
   position: relative;
   text-align: left;
   color: white;
@@ -23,7 +26,6 @@
   text-shadow: 2px 2px 8px #312f2f;
   width: inherit;
   margin: 0;
-  margin-top: 80px;
 }
 .matches-header-column {
   height: 100%;
@@ -34,10 +36,10 @@
   color: white;
 }
 .matches-header-column p {
-    text-shadow: 5px 5px 8px black;
-    color: white;
-    font-size: 90px;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  text-shadow: 5px 5px 8px black;
+  color: white;
+  font-size: 90px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 .matches {
   display: flex;
@@ -109,4 +111,9 @@
   margin-bottom: 0;
   color: white;
   text-align: center;
+}
+.view-match-edit {
+  position: absolute;
+  right: 68px;
+  top: 21px;
 }

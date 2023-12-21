@@ -17,13 +17,43 @@ import Home from "./Components/Home/Home.jsx";
 import Profile from "./Components/ProfilePage/profile.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 function App() {
-  const user = "fan";
+  const user = "FEA";
+  let links;
+  switch (user) {
+    case "guest":
+      links = [
+        { path: "/", label: "Home" },
+        { path: "/Signup", label: "Signup" },
+        { path: "/Signin", label: "Signin" },
+      ];
+      break;
+    case "fan":
+      links = [
+        { path: "/", label: "Home" },
+        { path: "/Profile", label: "Profile" },
+        { path: "/Tickets", label: "Tickets" },
+      ];
+      break;
+    case "FEA":
+      links = [
+        { path: "/", label: "Home" },
+        { path: "/ViewStadium", label: "ViewStadium" },
+      ];
+      break;
+  }
+  const navbarConfig = {
+    logo: "Premier League Matches",
+    links: links,
+  };
+
   return (
     <div className="App">
-      
+      <Navbar {...navbarConfig} />
+
       {/* <DeleteUser></DeleteUser> */}
       {/* <UserRequest /> */}
       {/* <ViewMatches userType="FEA"></ViewMatches> */}
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home userType={user}></Home>} />
@@ -38,6 +68,7 @@ function App() {
             path="/ViewStadium"
             element={<ViewStadium userType={user}></ViewStadium>}
           />
+          <Route path="/Tickets" element={<ViewTickets></ViewTickets>} />
         </Routes>
       </BrowserRouter>
     </div>
