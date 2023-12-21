@@ -47,7 +47,7 @@ const EditMatches = () => {
 
     return (
         <div >
-            <button className={classes.popup_button} onClick={togglePopup}>   <BiPencil /></button>
+            <button className={classes.popup_button} onClick={togglePopup}>   <BiPencil size={30} /></button>
             {isPopupVisible && (
                 <div className={classes.popup}>
                     <div className={classes.headers}> <h3>Fill Matche Details</h3>

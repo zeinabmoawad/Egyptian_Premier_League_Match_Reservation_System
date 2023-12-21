@@ -49,11 +49,6 @@ function App() {
   return (
     <div className="App">
       <Navbar {...navbarConfig} />
-
-      {/* <DeleteUser></DeleteUser> */}
-      {/* <UserRequest /> */}
-      {/* <ViewMatches userType="FEA"></ViewMatches> */}
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home userType={user}></Home>} />
