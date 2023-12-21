@@ -33,8 +33,12 @@
   justify-content: space-around;
   align-content: space-around;
   /* background-color: #210155; */
-  color: white;
-
+}
+.stadiumes-header-column h1{
+  text-shadow: 5px 5px 8px black;
+    color: white;
+    font-size: 90px;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 .stadiumes{
   width: 100%;
@@ -63,10 +67,9 @@
   height: 230px;
   text-align: center;
 }
-/* .stadium img {
-  width: 100px;
-  height: 50px;
-} */
+.stadium-seats p{
+  color: white;
+}
 .stadium-teams {
 
   width: 100%;
@@ -93,32 +96,7 @@
   color: white;
 
 }
-.stadium-day-time p {
-  margin-bottom: 0;
-  color: white;
 
-}
-.stadium-time {
-  font-size: x-large;
-  font-weight: 700;
-  color: white;
-
-}
-.stadium-day {
-  font-size: xx-small;
-  color: white;
-
-}
-.stadium-location {
-  font-size: smaller;
-  color: white;
-
-}
-.stadium-location p {
-  margin-bottom: 0;
-  color: white;
-
-}
 .stadiumes-header h1{
   margin-bottom: 20%;
 }
@@ -127,7 +105,3 @@
   font-size: 30px;
   
 }
-/* .stadium-seats{
-  background-color: red;
-  width: 100%;
-} */

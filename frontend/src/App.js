@@ -15,7 +15,7 @@ import UserRequest from "./Components/User/Requests/UserRequest";
 import Signup from "./Components/Signup/Signup";
 import Home from "./Components/Home/Home.jsx";
 function App() {
-  const user = "fan";
+  const user = "FEA";
   return (
     <div className="App">
       {/* <DeleteUser></DeleteUser> */}
@@ -28,9 +28,10 @@ function App() {
           <Route path="/Signin" element={<Login></Login>} />
           <Route
             path="/MatchDetails/:matchid"
-            element={<MatchDetails userType={user}></MatchDetails>}
-          />
+            element={<MatchDetails userType={user}></MatchDetails>}/>
           <Route path="/Profile" element={<ProfilePage></ProfilePage>} />
+          <Route path="/ViewStadium" element={<ViewStadium userType={user}></ViewStadium>} />
+
         </Routes>
       </BrowserRouter>
     </div>

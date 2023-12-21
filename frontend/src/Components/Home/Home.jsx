@@ -18,6 +18,12 @@ function Home(props) {
         { path: "/Profile", label: "Profile" },
       ];
       break;
+    case "FEA":
+      links = [
+        { path: "/", label: "Home" },
+        { path: "/ViewStadium", label: "ViewStadium" },
+      ];
+      break;
   }
   const navbarConfig = {
     logo: "Premier League Matches",
@@ -26,7 +32,7 @@ function Home(props) {
   return (
     <div>
       <Navbar {...navbarConfig} />
-      <ViewMatches></ViewMatches>
+      <ViewMatches userType={props.userType}></ViewMatches>
     </div>
   );
 }
