@@ -14,10 +14,13 @@ import DeleteUser from "./Components/User/DeleteUser/DeleteUser";
 import UserRequest from "./Components/User/Requests/UserRequest";
 import Signup from "./Components/Signup/Signup";
 import Home from "./Components/Home/Home.jsx";
+import Profile from "./Components/ProfilePage/profile.jsx";
+import Navbar from "./Components/Navbar/Navbar.jsx";
 function App() {
-  const user = "FEA";
+  const user = "fan";
   return (
     <div className="App">
+      
       {/* <DeleteUser></DeleteUser> */}
       {/* <UserRequest /> */}
       {/* <ViewMatches userType="FEA"></ViewMatches> */}
@@ -28,10 +31,13 @@ function App() {
           <Route path="/Signin" element={<Login></Login>} />
           <Route
             path="/MatchDetails/:matchid"
-            element={<MatchDetails userType={user}></MatchDetails>}/>
-          <Route path="/Profile" element={<ProfilePage></ProfilePage>} />
-          <Route path="/ViewStadium" element={<ViewStadium userType={user}></ViewStadium>} />
-
+            element={<MatchDetails userType={user}></MatchDetails>}
+          />
+          <Route path="/Profile" element={<Profile></Profile>} />
+          <Route
+            path="/ViewStadium"
+            element={<ViewStadium userType={user}></ViewStadium>}
+          />
         </Routes>
       </BrowserRouter>
     </div>
