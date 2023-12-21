@@ -4,10 +4,11 @@
   /* align-items: center; */
   /* margin: auto; */
 }
+
 .stadiumes-header {
 
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.8)),
-              url("../../Assets/images/Stadium1.jpg");
+    url("../../Assets/images/Stadium1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -26,7 +27,8 @@
   text-shadow: 2px 2px 8px #312f2f;
   /* background-color: red; */
 }
-.stadiumes-header-column{
+
+.stadiumes-header-column {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -34,22 +36,24 @@
   align-content: space-around;
   /* background-color: #210155; */
 }
-.stadiumes-header-column h1{
+
+.stadiumes-header-column h1 {
   text-shadow: 5px 5px 8px black;
-    color: white;
-    font-size: 90px;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  color: white;
+  font-size: 90px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-.stadiumes{
+
+.stadiumes {
   width: 100%;
-    /* background-color: red; */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: white;
 
 }
+
 .stadium {
   background-image: url("../../Assets/images/Stadium.jpg");
   background-repeat: no-repeat;
@@ -67,9 +71,11 @@
   height: 230px;
   text-align: center;
 }
-.stadium-seats p{
+
+.stadium-seats p {
   color: white;
 }
+
 .stadium-teams {
 
   width: 100%;
@@ -81,6 +87,7 @@
   color: white;
 
 }
+
 .stadium-team {
   width: 75px;
   height: 100px;
@@ -91,17 +98,19 @@
   color: white;
 
 }
+
 .stadium-team p {
   margin-bottom: 0;
   color: white;
 
 }
 
-.stadiumes-header h1{
+.stadiumes-header h1 {
   margin-bottom: 20%;
 }
-.stadiumes p{
+
+.stadiumes p {
 
   font-size: 30px;
-  
+
 }
