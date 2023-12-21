@@ -17,7 +17,7 @@ import Home from "./Components/Home/Home.jsx";
 import Profile from "./Components/ProfilePage/profile.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 function App() {
-  const user = "FEA";
+  const user = "admin";
   let links;
   switch (user) {
     case "guest":
@@ -27,17 +27,22 @@ function App() {
         { path: "/Signin", label: "Signin" },
       ];
       break;
-    case "fan":
+    case "user":
       links = [
         { path: "/", label: "Home" },
         { path: "/Profile", label: "Profile" },
         { path: "/Tickets", label: "Tickets" },
       ];
       break;
-    case "FEA":
+    case "manager":
       links = [
         { path: "/", label: "Home" },
         { path: "/ViewStadium", label: "ViewStadium" },
+      ];
+    case "admin":
+      links = [
+        { path: "/UserRequest", label: "User Request" },
+        { path: "/DeleteUser", label: "Delete User" },
       ];
       break;
   }
@@ -64,6 +69,8 @@ function App() {
             element={<ViewStadium userType={user}></ViewStadium>}
           />
           <Route path="/Tickets" element={<ViewTickets></ViewTickets>} />
+          <Route path="/UserRequest" element={<UserRequest></UserRequest>} />
+          <Route path="/DeleteUser" element={<DeleteUser></DeleteUser>} />
         </Routes>
       </BrowserRouter>
     </div>

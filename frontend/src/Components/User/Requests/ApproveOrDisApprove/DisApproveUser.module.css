@@ -1,45 +1,41 @@
 .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    width: 30%;
-    height: 15%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    border-radius: 10px;
-    text-shadow: none;
-  }
-  
-  
-  .popup_button {
-    /* background-color: #4c3889; */
-    height: 100%;
-    width: 100%;
-    color: red;
-    background-color: transparent;
-    text-align: end;
-    border: none;
-    /* font-size: 60%; */
-  }
-  .deleteText {
-    color:black ;
-    text-align: center;
-    font-size: larger;
-  }
-  .delete_button{
-    background-color: red;
-    margin-left: 10px;
-  }
-  .cancel_button{
-    background-color: green;
-  }
- .buttons{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: end;
- }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 10px;
+  text-shadow: none;
+}
+
+.popup_button {
+  /* background-color: #4c3889; */
+  height: 100%;
+  width: 100%;
+  color: red;
+  background-color: transparent;
+  border: none;
+  /* font-size: 60%; */
+}
+.deleteText {
+  color: black;
+  text-align: center;
+  font-size: larger;
+}
+.delete_button {
+  background-color: red;
+  margin-left: 10px;
+}
+.cancel_button {
+  background-color: green;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+}

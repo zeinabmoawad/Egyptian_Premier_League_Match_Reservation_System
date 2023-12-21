@@ -137,7 +137,7 @@ export default function ViewMatches(props) {
         <Row className="matches-header">
           <Col className="matches-header-column">
             <p>Matches</p>
-            {props.userType == "FEA" && <CreateMatches></CreateMatches>}
+            {props.userType == "manager" && <CreateMatches></CreateMatches>}
           </Col>
         </Row>
         <Row className="matches justify-content-start">

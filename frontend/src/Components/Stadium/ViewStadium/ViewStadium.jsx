@@ -38,7 +38,7 @@ function ViewStadium(props) {
         <Row className="stadiumes-header">
           <Col className="stadiumes-header-column">
             <h1>Stadium</h1>
-            {props.userType=="FEA"&&(<CreateStadium></CreateStadium>)}
+            {props.userType=="manager"&&(<CreateStadium></CreateStadium>)}
           </Col>
         </Row>
         <Row className="stadiumes">

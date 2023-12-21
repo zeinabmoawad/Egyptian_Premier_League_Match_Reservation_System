@@ -41,7 +41,7 @@ export default function DeleteUser() {
       <Container className="matches-container">
         <Row className="matches-header">
           <Col className="matches-header-column">
-            <h1>Users</h1>
+            <p>Users</p>
           </Col>
         </Row>
         <Row className="matches justify-content-start">

@@ -4,8 +4,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    width: 30%;
-    height: 15%;
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -21,7 +19,6 @@
     width: 100%;
     color: red;
     background-color: transparent;
-    text-align: end;
     border: none;
     /* font-size: 60%; */
   }

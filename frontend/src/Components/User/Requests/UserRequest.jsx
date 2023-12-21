@@ -70,7 +70,7 @@ export default function UserRequest() {
       <Container className="matches-container">
         <Row className="matches-header">
           <Col className="matches-header-column">
-            <h1>Requests</h1>
+            <p>Requests</p>
           </Col>
         </Row>
         <Row className="matches justify-content-start">
