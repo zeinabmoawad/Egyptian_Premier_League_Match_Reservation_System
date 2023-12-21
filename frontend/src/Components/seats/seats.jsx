@@ -49,6 +49,7 @@ export default function Seats(props) {
           rowSeats.push(
             <Col key={i} className="seats-col">
               <Seat
+                userType={props.userType}
                 key={`${i}-${j}`}
                 id={alphabet[i] + j}
                 onSeatClick={props.onSeatClick}
@@ -68,8 +69,8 @@ export default function Seats(props) {
     <div>
       <Container className="seats-container">
         <Row className="seats-number-row">
-          {numbers.map((number,i) => (
-            <Col key={100+i}>{number}</Col>
+          {numbers.map((number, i) => (
+            <Col key={100 + i}>{number}</Col>
           ))}
         </Row>
         {renderSeats()}

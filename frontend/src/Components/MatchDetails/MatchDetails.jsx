@@ -9,7 +9,8 @@ import WadiDegla from "../Assets/teams logos 240x240/15.png";
 import DeleteTicketPopUp from "./deleteTicketPopUp";
 import { useParams } from "react-router-dom";
 
-export default function MatchDetails() {
+export default function MatchDetails(props) {
+  console.log("usertype in match details" + props.userType);
   const [columns, setColumns] = useState(5);
   const [rows, setRows] = useState(5);
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -44,7 +45,6 @@ export default function MatchDetails() {
   console.log(matchid);
   return (
     <div className="match-details">
-      
       {purchase ? (
         <div className="overlay">
           <DeleteTicketPopUp
@@ -73,6 +73,7 @@ export default function MatchDetails() {
         <Row className="match-details-row">
           <Col>
             <Seats
+              userType={props.userType}
               columns={columns}
               rows={rows}
               onSeatClick={handleSeatClick}

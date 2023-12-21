@@ -94,7 +94,7 @@ h3 {
 
 }
 
-label {
+.form_columns label {
   text-decoration: none;
   display: flex;
   flex-direction: column;

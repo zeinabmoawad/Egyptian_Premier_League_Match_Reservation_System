@@ -5,13 +5,13 @@
   text-align: left;
   padding: 20px;
 }
-.form-control {
+.profileContainer .form-control {
   margin-bottom: 30px;
 }
-.date-picker-control {
+.profileContainer .date-picker-control {
   width: 100%;
 }
-.date-picker-control label {
+.profileContainer .date-picker-control label {
   display: block;
   margin-bottom: 0.5rem;
 }
