@@ -20,10 +20,10 @@ form {
   display: block;
 }
 
-form div {
+/* .create_match_div {
   height: 25%;
   width: 90%;
-}
+} */
 
 .headers {
   display: flex;

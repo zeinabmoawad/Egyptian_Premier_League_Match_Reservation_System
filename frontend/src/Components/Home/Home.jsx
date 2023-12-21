@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from "../Navbar/Navbar.jsx";
 import classes from "./Home.module.css"
-import MatchCard from '../Matches/Card/MatchCard.jsx';
+import ViewMatches from ".././Matches/ViewMatches/ViewMatches.jsx";
 function Home() {
   const navbarConfig = {
-    logo: 'Premier League Tickets',
+    logo: 'Premier League Matches',
     links: [
       { path: '/', label: 'Home' },
       { path: '/Signup', label: 'Signup' },
@@ -14,8 +14,8 @@ function Home() {
   return (
     <div>
       <Navbar {...navbarConfig} />
-      <MatchCard></MatchCard>
-    </div>
+      <ViewMatches></ViewMatches>
+          </div>
   )
 }
 

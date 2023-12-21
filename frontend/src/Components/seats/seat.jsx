@@ -12,6 +12,7 @@ export default function Seat(props) {
   return (
     <div onClick={toggleSelection}>
       <FaChair
+      size={50}
         className={
           reserved
             ? "reserved icon"

@@ -34,7 +34,9 @@ const Signup = () => {
             console.error('Error submitting form:', error.message);
         }
     };
+    
     return (
+        <div className={classes.signup}>
         <div className={classes.form_container}>
             <form onSubmit={handleSubmit}>
                 <h2>Create Account</h2>
@@ -136,6 +138,7 @@ const Signup = () => {
 
                 <button type="submit">Create account</button>
             </form>
+        </div>
         </div>
     )
 }

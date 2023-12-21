@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./DeleteUser.css";
 import { Container, Row, Col } from "react-bootstrap";
 import User from "../User";
+import DeletePopUp from '../DeleteUser/DeletePopup/DeletePopUp';
 
 export default function DeleteUser() {
   // const [matches, setMatches] = useState([]);
@@ -45,8 +46,13 @@ export default function DeleteUser() {
         </Row>
         <Row className="matches justify-content-start">
           {users.map((item, i) => (
-            <User user={item} key={i} />
-          ))}
+            <Col md={3} key={i} className="delete-popup">
+              <div className='delete-popup-icon'>
+                <DeletePopUp/>
+              </div>
+              <User user={item}  />
+            </Col>
+            ))}
         </Row>
       </Container>
     </div>

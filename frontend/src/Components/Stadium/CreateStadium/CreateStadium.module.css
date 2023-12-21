@@ -19,11 +19,11 @@
     height: 100%;
     display: block;
   }
-  
+/*   
   form div {
     height: 25%;
     width: 90%;
-  }
+  } */
   
   .headers {
     display: flex;

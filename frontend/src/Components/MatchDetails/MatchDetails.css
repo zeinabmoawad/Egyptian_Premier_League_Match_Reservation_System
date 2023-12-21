@@ -16,6 +16,9 @@
 .match-details-teams {
   display: flex;
   justify-content: space-around;
+ 
+}
+.match-details-teams p {
   color: white;
   font-size: 46px;
   font-weight: 600;

@@ -1,5 +1,6 @@
 import "./App.css";
-import LoginSignup from "./Components/LoginSignup/LoginSignup";
+import {BrowserRouter,Router,Routes,Route } from "react-router-dom";
+import Login from "./Components/LoginSignup/LoginSignup";
 import MatchDetails from "./Components/MatchDetails/MatchDetails";
 import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import UserProfileCard from "./Components/UserProfileCard/UserProfileCard";
@@ -11,20 +12,23 @@ import ViewStadium from "./Components/Stadium/ViewStadium/ViewStadium";
 import ViewTickets from "./Components/ViewTickets/ViewTickets";
 import DeleteUser from "./Components/User/DeleteUser/DeleteUser";
 import UserRequest from "./Components/User/Requests/UserRequest";
+import Signup from './Components/Signup/Signup'
+import Home from "./Components/Home/Home.jsx";
 function App() {
+  const user = "guest";
   return (
     <div className="App">
-      <UserRequest />
+      {/* <DeleteUser></DeleteUser> */}
+      {/* <UserRequest /> */}
       {/* <ViewMatches userType="FEA"></ViewMatches> */}
-      {/* <Router>
-      <div>
+      <BrowserRouter>
        <Routes>
-          <Route path="/" element={<HomePage></HomePage>} />
+          <Route path="/" element={<Home></Home>} />
           <Route path="/Signup" element={<Signup></Signup>} />
           <Route path="/Signin" element={<Login></Login>} />
-          </Routes>
-      </div>
-    </Router> */}
+          <Route path="/MatchDetails/:matchid" element={<MatchDetails></MatchDetails>} />
+        </Routes>
+    </BrowserRouter>
     </div>
   );
 }

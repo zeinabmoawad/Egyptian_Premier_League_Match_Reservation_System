@@ -8,7 +8,7 @@ const Navbar = ({ logo, links }) => {
 
       <ul className={classes.navetor_list1}>
         {links.map((link, index) => (
-          <li><a href={link.path}> {link.label}</a></li>
+          <li key={index}><a href={link.path}> {link.label}</a></li>
         ))}
       </ul>
     </div>

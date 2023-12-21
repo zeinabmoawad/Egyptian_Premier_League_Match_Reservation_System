@@ -7,6 +7,7 @@ import field from "../Assets/field.png";
 import AlAhly from "../Assets/teams logos 240x240/01.png";
 import WadiDegla from "../Assets/teams logos 240x240/15.png";
 import DeleteTicketPopUp from "./deleteTicketPopUp";
+import { useParams } from "react-router-dom";
 
 export default function MatchDetails() {
   const [columns, setColumns] = useState(5);
@@ -27,9 +28,10 @@ export default function MatchDetails() {
       prevSelectedSeats.filter((id) => id !== label)
     );
   }
-
+  const matchid = useParams()["matchid"];
+  // const matchid = match.params.matchid;
   // useEffect(() => {
-  //   const socket = new WebSocket("http://localhost:3000");
+  //   const socket = new WebSocket("http://localhost:3000"+matchid);
   //   socket.onmessage = (event) => {
   //     const receivedMessage = event.data;
   //     setSelectedSeats(receivedMessage);
@@ -39,9 +41,10 @@ export default function MatchDetails() {
   //     socket.close();
   //   };
   // }, []);
-
+  console.log(matchid);
   return (
     <div className="match-details">
+      
       {purchase ? (
         <div className="overlay">
           <DeleteTicketPopUp
@@ -93,6 +96,7 @@ export default function MatchDetails() {
             <div className="match-details-tickets">
               {selectedSeats.map((item, i) => (
                 <Ticket
+                  key={i}
                   label={item}
                   price="200"
                   deleteTicket={deleteTicket}

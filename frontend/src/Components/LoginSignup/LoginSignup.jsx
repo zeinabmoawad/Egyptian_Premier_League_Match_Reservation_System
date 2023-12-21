@@ -14,7 +14,7 @@ function Login() {
             <h2>{action}</h2>
           </div>
           <div className="signinlink">
-            <span>New ? </span>
+            <span className="span_new">New ? </span>
             <a href="/Signup">Create an account</a>
           </div>
         </div>

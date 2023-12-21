@@ -1,0 +1,9 @@
+.delete-popup {
+    position: relative;
+}
+.delete-popup-icon {
+    position: absolute;
+    right: 23px;
+    top: 23px;
+    font-size: 23px;
+}

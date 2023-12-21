@@ -71,6 +71,7 @@ export default function ViewMatches(props) {
 
   var matches = [
     {
+      id: 1,
       team1: "Wadi Degla",
       team2: "El-Ettahad",
       time: "12:00",
@@ -133,7 +134,7 @@ export default function ViewMatches(props) {
       <Container className="matches-container">
         <Row className="matches-header">
           <Col className="matches-header-column">
-            <h1>Matches</h1>
+            <p>Matches</p>
             {props.userType == "FEA" && (<CreateMatches></CreateMatches>)}
           </Col>
 
@@ -141,10 +142,10 @@ export default function ViewMatches(props) {
         <Row className="matches justify-content-start">
           {matches.map((item, i) => (
             <Col md={3} key={i}>
-              <div className="match">
+              <a href={/MatchDetails/+i}>
+              <div className="match" >
                 {/* <div><DeletePopUp></DeletePopUp></div> */}
                 {/* <div><EditMatches></EditMatches></div> */}
-                <div><DisApproveUser></DisApproveUser></div>
                 <div className="match-teams">
                   <div className="match-team match-team-left">
                     <img src={teamsLogos[item.team1]} alt="" />
@@ -159,14 +160,11 @@ export default function ViewMatches(props) {
                     <p>{item.team2}</p>
                   </div>
                 </div>
-                <div className="match-location">
-                  <p>
-                    <FaLocationDot />
-                    {item.location}
-                  </p>
+                  <div className="match-location">
                   <p>{item.referee}</p>
                 </div>
               </div>
+              </a>
             </Col>
           ))}
         </Row>
