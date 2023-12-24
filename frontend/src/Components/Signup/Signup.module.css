@@ -6,6 +6,7 @@
 }
 .form_container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: start;
@@ -15,9 +16,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
+.form_container form{
+  
+width: 85%;
+/* background-color: #4c3889; */
+display: block;
+}
 
 .form_group {
-  width: 400px;
   height: 7%;
   color: #5c6570;
 }
@@ -51,13 +57,14 @@ input:focus {
   border: 3px solid #4c3889;
 }
 .signup button {
+  display: block;
+  margin: auto;
   border-radius: 30px;
   width: 80%;
   height: 6%;
   background-color: #4c3889;
   border: 3px solid #4c3889;
   margin-bottom: 10px;
-  margin-left: 45px;
   color: white;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }

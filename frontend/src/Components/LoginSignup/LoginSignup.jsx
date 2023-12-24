@@ -1,11 +1,35 @@
 import React, { useState } from "react";
 import "./LoginSignup.css";
-
+import axios from "axios";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [action, setAction] = useState("Sign in");
+  const action = "Login";
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
+  const handleLogin = async () => {
+    try {
+      const body = {
+        userName: username,
+        password: password
+      };
+      // Make the API request to the delete endpoint using Axios
+      const response = await axios.post("http://localhost:8000/api/v1/users/login", body);
+
+      // Check if the request was successful
+      if (response.status === 200) {
+        console.log('Login successfully!');
+        navigate("/");
+      } else {
+        console.error('Error deleting item:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  };
   return (
     <div className="screen">
       <div className="loginsignup-container">
@@ -19,19 +43,13 @@ function Login() {
           </div>
         </div>
         <div className="inputs">
-          {action === "Sign in" ? null : (
-            <div className="input">
-              <FaUser className="icon" />
-              <input type="text" placeholder="Name" />
-            </div>
-          )}
           <div className="input">
-            <FaEnvelope className="icon" />
-            <input type="email" placeholder="Email" />
+            <FaUser className="icon" />
+            <input type="text" placeholder="Username" onChange={(event)=>setUsername(event.target.value)}/>
           </div>
           <div className="input">
             <FaLock className="icon" />
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" onChange={(event)=>setPassword(event.target.value)}/>
           </div>
         </div>
         {action === "Sign Up" ? null : (
@@ -47,10 +65,8 @@ function Login() {
             Sign Up
           </div> */}
           <div
-            className={action === "Sign in" ? "submit" : "submit  gray"}
-            onClick={() => {
-              setAction("Sign in");
-            }}
+            className={username && password? "submit" : "submit  gray"}
+            onClick={handleLogin}
           >
             Sign in
           </div>

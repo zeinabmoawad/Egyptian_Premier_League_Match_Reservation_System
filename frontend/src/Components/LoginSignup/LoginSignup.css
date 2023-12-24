@@ -43,6 +43,7 @@
 }
 
 .inputs {
+  width: 80%;
   margin-top: 55px;
   display: flex;
   flex-direction: column;
@@ -54,7 +55,6 @@
   align-items: center;
   /* margin: ; */
   margin-left: 15px;
-  width: 350px;
   border-radius: 4px;
   background-color: #f5f8f9;
   border-radius: 6px;
@@ -71,7 +71,6 @@
 
 .input input {
   height: 50px;
-  width: 400px;
   background: transparent;
   border: none;
   outline: none;
