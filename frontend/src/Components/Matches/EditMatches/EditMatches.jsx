@@ -8,11 +8,11 @@ import { BiPencil } from 'react-icons/bi';
 const EditMatches = (props) => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [formData, setFormData] = useState({
-        matchVenue: null,
-        time: null,
-        mainReferee: null,
-        linesman1: null,
-        linesman2: null,
+        matchVenue: undefined,
+        time: undefined,
+        mainReferee: undefined,
+        linesman1: undefined,
+        linesman2: undefined,
     });
 
     const togglePopup = () => {
@@ -31,9 +31,9 @@ const EditMatches = (props) => {
     };
 
     const handleSubmit = async (e) => {
+      
         e.preventDefault();
         // Handle form submission logic here
-        console.log(props.matchId)
         console.log('Form submitted:', formData);
         // Close the popup after form submission
         setPopupVisible(false);
@@ -41,10 +41,10 @@ const EditMatches = (props) => {
             const id = props.matchId
             console.log(`http://localhost:8000/api/v1/match/update_match/${id}`)
             const response = await axios.post(`http://localhost:8000/api/v1/match/update_match/${id}`, formData);
-
+            props.change(response.data);
             console.log('Server response:', response.data);
         } catch (error) {
-            console.error('Error submitting form:', error.message);
+            console.error('Error submitting form:', error);
         }
     };
 

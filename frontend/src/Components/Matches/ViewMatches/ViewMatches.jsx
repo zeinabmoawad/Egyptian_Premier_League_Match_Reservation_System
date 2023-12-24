@@ -46,6 +46,18 @@ export default function ViewMatches(props) {
     fetchData();
   }, [apiUrl]);
 
+  function changeMatches(updatedmatch){
+    setMatchData((prevMatches) => {
+      return prevMatches.map((match) => {
+        if (match._id === updatedmatch.data._id) {
+          return { ...match, ...updatedmatch.data };
+        } else {
+          return match;
+        }
+      });
+    });
+  }
+
   // var matches = [
   //   {
   //     id: 1,
@@ -124,9 +136,9 @@ export default function ViewMatches(props) {
               <div className="match">
                 {/* <div><DeletePopUp></DeletePopUp></div> */}
                 <div className="view-match-edit" onClick={handleChildClick}>
-                  {props.userType == "manager" && <EditMatches matchId={item._id}></EditMatches>}
+                  {props.userType == "manager" && <EditMatches matchId={item._id} change={changeMatches}></EditMatches>}
                 </div>
-                <a href={/MatchDetails/ + i}>
+                <a href={/MatchDetails/ + item._id}>
                   <div className="match-teams">
                     <div className="match-team match-team-left">
                       <img src={item.homeTeam.url} alt="" />

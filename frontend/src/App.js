@@ -39,6 +39,7 @@ function App() {
         { path: "/", label: "Home" },
         { path: "/ViewStadium", label: "ViewStadium" },
       ];
+      break;
     case "admin":
       links = [
         { path: "/UserRequest", label: "User Request" },

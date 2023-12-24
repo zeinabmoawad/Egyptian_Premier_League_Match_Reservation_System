@@ -5,12 +5,12 @@ import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreateStadium = () => {
+const CreateStadium = (props) => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [formData, setFormData] = useState({
-        Name:'',
-        Row: 0,
-        Column:0,
+        name:'',
+        rows: 0,
+        numberOfSeatsPerRow:0,
     });
 
     const togglePopup = () => {
@@ -35,9 +35,13 @@ const CreateStadium = () => {
         // Close the popup after form submission
         setPopupVisible(false);
         try {
-            const response = await axios.post('your-api-endpoint', formData);
+            const response = await axios.post('http://localhost:8000/api/v1/stadium', formData);
 
-            console.log('Server response:', response.data);
+            // console.log('Server response:', response.data);
+            // console.log("Createeeeeeeeeeeeeeeeeee")
+            // console.log(response)
+            props.change(response.data);
+
         } catch (error) {
             console.error('Error submitting form:', error.message);
         }
@@ -62,8 +66,8 @@ const CreateStadium = () => {
                                     Name:
                                     <input
                                         type="text"
-                                        name="Name"
-                                        value={formData.Name}
+                                        name="name"
+                                        value={formData.name}
                                         onChange={handleChange}
                                     />
                                 </label></div>
@@ -71,9 +75,9 @@ const CreateStadium = () => {
                                 Row:
                                 <input
                                     type="number"
-                                    name="Row"
+                                    name="rows"
                                     min="0"
-                                    value={formData.Row}
+                                    value={formData.rows}
                                     onChange={handleChange}
                                 />
                             </label></div>
@@ -82,9 +86,9 @@ const CreateStadium = () => {
                                  Column:
                                 <input
                                     type="number"
-                                    name="Column"
+                                    name="numberOfSeatsPerRow"
                                     min="0"
-                                    value={formData.Column}
+                                    value={formData.numberOfSeatsPerRow}
                                     onChange={handleChange}
                                 />
                             </label></div>

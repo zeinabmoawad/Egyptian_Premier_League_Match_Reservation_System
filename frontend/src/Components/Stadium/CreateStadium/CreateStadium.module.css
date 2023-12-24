@@ -4,8 +4,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    width: 30%;
-    height: 42%;
+    /* width: 30%; */
+    /* height: 42%; */
     padding: 20px;
     border: 1px solid #ccc;
     /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
@@ -16,7 +16,7 @@
   
   form {
     /* background-color: red; */
-    height: 100%;
+    /* height: 100%; */
     display: block;
   }
 /*   
@@ -44,8 +44,8 @@
   }
   
   .form_columns {
-    height: 70%;
-    width: 100%;
+    /* height: 70%;
+    width: 100%; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -55,8 +55,8 @@
   }
   
   .column1 {
-    height: 100%;
-    width: 50%;
+    /* height: 100%;
+    width: 50%; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -65,8 +65,8 @@
   }
   
   .column2 {
-    height: 100%;
-    width: 50%;
+    /* height: 100%;
+    width: 50%; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -79,7 +79,7 @@
     font-size: 100%;
     background-color: white;
     border: 1px solid white;
-    width: 1%;
+    /* width: 1%; */
   
   }
   
@@ -101,7 +101,7 @@
     font-size: 60%;
     color: #72757a;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    height: 100%;
+    /* height: 100%; */
     margin-top: 5%;
   }
   
@@ -111,18 +111,19 @@
   
   .sumbit_button {
     margin-bottom: 5%;
-    height: 15%;
-    width: 30%;
+    /* height: 15%;
+    width: 30%; */
     margin-left: 70%;
     border: 1px solid #ccc;
     border-radius: 10px;
    color:white ;
     text-align: center;
+    margin-top: 2%;
   }
   
   .popup_button {
-    height: 100%;
-    width: 10%;
+    /* height: 100%;
+    width: 10%; */
     /* background-color: #210155; */
     /* color: #4c3889; */
     /* border-color: #210155; */

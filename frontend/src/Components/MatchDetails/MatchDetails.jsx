@@ -30,6 +30,8 @@ export default function MatchDetails(props) {
     );
   }
   const matchid = useParams()["matchid"];
+  console.log(matchid);
+
   // const matchid = match.params.matchid;
   // useEffect(() => {
   //   const socket = new WebSocket("http://localhost:3000"+matchid);
@@ -42,7 +44,6 @@ export default function MatchDetails(props) {
   //     socket.close();
   //   };
   // }, []);
-  console.log(matchid);
   return (
     <div className="match-details">
       {purchase ? (
