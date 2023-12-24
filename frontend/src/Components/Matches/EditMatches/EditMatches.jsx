@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { BiPencil } from 'react-icons/bi';
-const EditMatches = (props) => {
+const EditMatches = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [formData, setFormData] = useState({
         matchVenue: undefined,
@@ -75,8 +75,8 @@ const EditMatches = (props) => {
                                 Date & Time:
                                 <input
                                     type="datetime-local"
-                                    name="time"
-                                    value={formData.time}
+                                    name="dateTime"
+                                    value={formData.dateTime}
                                     onChange={handleChange}
                                 />
                             </label></div>

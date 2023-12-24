@@ -4,7 +4,7 @@ import { BiTrash  } from 'react-icons/bi';
 import Button from 'react-bootstrap/Button';
 
 import classes from "./DeletePopup.module.css"
-const DeletePopUp = () => {
+const DeletePopUp = (props) => {
     const [isPopupVisible, setPopupVisible] = useState(false);
 
     const showPopup = () => setPopupVisible(true);
@@ -12,8 +12,11 @@ const DeletePopUp = () => {
   
     const handleDelete = async () => {
         try {
+          const body = {
+              userId: props.userId,
+          };
           // Make the API request to the delete endpoint using Axios
-          const response = await axios.delete("");
+          const response = await axios.post("http://localhost:8000/api/v1/users/delete_user", body);
     
           // Check if the request was successful
           if (response.status === 200) {

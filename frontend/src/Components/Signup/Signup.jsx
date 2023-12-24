@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import classes from './Signup.module.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Signup = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -25,16 +27,51 @@ const Signup = () => {
         e.preventDefault();
         console.log('Form submitted:', formData);
         e.preventDefault();
-
         try {
-            const response = await axios.post('your-api-endpoint', formData);
-
-            console.log('Server response:', response.data);
-        } catch (error) {
-            console.error('Error submitting form:', error.message);
-        }
-    };
+          const body = {
+            userName: formData.username,
+            email: formData.email,
+            password: formData.password,
+          };
+          console.log("Before url = ",body)
+          
+          // Make the API request to the delete endpoint using Axios
+          const response1 = await axios.post("http://localhost:8000/api/v1/users/signup", body);
     
+          // Check if the request was successful
+          console.log(response1.data)
+          if (response1.status === 201) {
+              console.log('Sign up successfully!');
+                  const body = {
+                    city: formData.city,
+                    address: formData.address,
+                    birthDate: formData.birthDate,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    gender: formData.gender,
+                  };
+                  // Make the API request to the delete endpoint using Axios
+                  const response = await axios.post("http://localhost:8000/api/v1/users/update_user", body,{
+                    headers: {
+                      'Authorization': `Bearer ${response1.data.token}`,
+                      'Content-Type': 'application/json' // Adjust content type as needed
+                    }
+                  });
+            
+                  // Check if the request was successful
+                  if (response.status === 200) {
+                    console.log('update successfully!');
+                    navigate("/");
+                  } else {
+                    console.error('Error updating item:', response.status);
+                  }
+          } else {
+            console.error('Error signing up item:', response1.errorMessage);
+          }
+        } catch (error) {
+          console.error('Error: ',error);
+        }
+      };
     return (
         <div className={classes.signup}>
         <div className={classes.form_container}>
