@@ -8,6 +8,7 @@ import AlAhly from "../Assets/teams logos 240x240/01.png";
 import WadiDegla from "../Assets/teams logos 240x240/15.png";
 import DeleteTicketPopUp from "./deleteTicketPopUp";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function MatchDetails(props) {
   console.log("usertype in match details" + props.userType);
@@ -29,8 +30,7 @@ export default function MatchDetails(props) {
       prevSelectedSeats.filter((id) => id !== label)
     );
   }
-  const matchid = useParams()["matchid"];
-  console.log(matchid);
+  
 
   // const matchid = match.params.matchid;
   // useEffect(() => {
@@ -44,6 +44,26 @@ export default function MatchDetails(props) {
   //     socket.close();
   //   };
   // }, []);
+  
+  const [match, setMatch] = useState({});
+  const { matchid } = useParams();
+  const apiUrl = `http://localhost:8000/api/v1/match/get_match/${matchid}`;
+  
+  useEffect(() => {
+    console.log("HERE");
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(apiUrl);
+        setMatch(response.data.data);
+        console.log("response", response.data);
+        console.log("url = ",response.data.data.homeTeam)
+      } catch (error) {
+        console.error('Error fetching match details:', error);
+      }
+    };
+
+    fetchData();
+  }, [apiUrl]);
   return (
     <div className="match-details">
       {purchase ? (
@@ -51,23 +71,24 @@ export default function MatchDetails(props) {
           <DeleteTicketPopUp
             price={selectedSeats.length * 200}
             closeWindow={setPurchase}
-          />
+            />
         </div>
       ) : null}
+      {Object.keys(match).length != 0?
       <Container className="container-fluid match-details-container">
         <Row className="match-details-row">
           <Col className="match-details-teams">
             <div>
-              <img src={AlAhly} alt="" />
-              <p>Al-Ahly</p>
+              <img src={match.homeTeam.url} alt="" />
+              <p>{match.homeTeam.name}</p>
             </div>
             <div className="match-details-day-time">
               <p className="match-details-time">12:00</p>
               <p className="match-details-day">Mar 23,2023</p>
             </div>
             <div>
-              <img src={WadiDegla} alt="" />
-              <p>Wadi Degla</p>
+              <img src={match.awayTeam.url} alt="" />
+              <p>{match.awayTeam.name}</p>
             </div>
           </Col>
         </Row>
@@ -75,8 +96,8 @@ export default function MatchDetails(props) {
           <Col>
             <Seats
               userType={props.userType}
-              columns={columns}
-              rows={rows}
+              columns={match.matchVenue.numberOfSeatsPerRow}
+              rows={match.matchVenue.rows}
               onSeatClick={handleSeatClick}
               selectedSeats={selectedSeats}
             ></Seats>
@@ -108,6 +129,7 @@ export default function MatchDetails(props) {
           </Col>
         </Row>
       </Container>
+        :null}
     </div>
   );
 }
