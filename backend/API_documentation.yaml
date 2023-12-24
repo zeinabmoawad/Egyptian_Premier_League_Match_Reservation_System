@@ -1,0 +1,952 @@
+openapi: 3.0.0
+
+info:
+  title: Reddit Restful API
+  description: API Documentaion.
+  version: "1.0.0"
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://localhost:8000/api/v1
+    description: Development server
+  - url: https://api.nonlegit.click/api/v1
+    description: Production server
+paths:
+  #USERS
+
+  /users/login:
+    description: User Resource
+    post:
+      tags:
+        - "Users"
+      description: Get authenticated to access our api services later.
+      summary: User Login
+
+      requestBody:
+        description: get authenticated using userName & password
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  example: uniqueuser
+                password:
+                  type: string
+                  example: Aa1234**
+      responses:
+        200:
+          description: Success operation
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: jwt=abcde12345; expires = time ; Path=/; HttpOnly
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  token:
+                    type: string
+                  expiresIn:
+                    type: string
+                    format: date-time
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: User Not Found
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: Incorrect password
+  /users/logout:
+    description: User Resource
+    post:
+      tags:
+        - "Users"
+      description: update token stored in user
+      summary: Log Out
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  token:
+                    type: string
+                  expiresIn:
+                    type: string
+                    format: date-time
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: jwt=abcde12345; expires = time ;Path=/; HttpOnly
+
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /users/signup:
+    description: User Resource
+    post:
+      tags:
+        - "Users"
+      description: signup as user in reddit
+      summary: User SignUP
+      requestBody:
+        description: new user registrated
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  example: uniqueuser
+                email:
+                  type: string
+                  example: user@gmail.com
+                password:
+                  type: string
+                  example: Aa1234**
+      responses:
+        201:
+          description: Success operation
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: jwt=abcde12345; expires = time ; Path=/; HttpOnly
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  token:
+                    type: string
+                  expiresIn:
+                    type: string
+                    format: date-time
+        400:
+          description: Bad Request (0 -> not provide body, 1 -> weak password, 2 -> user already exists)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                  errorType:
+                    type: integer
+                    enum:
+                      - 0
+                      - 1
+                      - 2
+
+  
+  
+  /users/username_available:
+    get:
+      tags:
+        - Users
+      summary: Check UserName available
+      description: Check whether a userName is available for registration
+      parameters:
+        - in: query
+          name: userName
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: 
+                    type: string
+                    example: success
+                  available:
+                    type: boolean
+        400:
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  message:
+                    type: string
+                    example: userName query paramater is required
+
+
+  /users/delete_account/:
+    description: User Resource
+    post:
+      tags:
+        - "Users"
+      description: delete account
+      summary: delete account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  example: Ahmed
+                password:
+                  type: string
+                  example: Aa123456*
+      responses:
+        204:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: User Not Found
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: Incorrect password
+        401:
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /users/update_user:
+    description: User Resource
+    post:
+      tags:
+        - "Users"
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      description: update user data
+      summary: update user data
+
+      requestBody:
+        description: user data to update
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                city:
+                  type: string
+                  example: helwan
+                address:
+                  type: string
+                  example: address
+                birthDate:
+                  type: string
+                  example: 12/4/2015
+                firstName:
+                  type: string
+                  example: name
+                lastName:
+                  type: string
+                  example: name
+                gender:
+                  type: string
+                  example: male
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: sucess
+                  user:
+                    $ref: "#/components/schemas/User"
+
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: body is required
+  /users/approve_user:
+    description: User Resource
+    post:
+      tags:
+        - "Users"
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      description: approve user as manager
+      summary: approve user as manager
+
+      requestBody:
+        description: user id to approve as manager
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  example: id
+
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: sucess
+
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: user id is required
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: user id is not found
+          
+        401:
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: Unauthorized
+
+  /users/delete_user:
+    description: User Resource
+    post:
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      tags:
+        - "Users"
+      description: delete user 
+      summary: delete user 
+
+      requestBody:
+        description: user id to delete
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  example: id
+
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: sucess
+
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: user id is required
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: user id is not found
+          
+        401:
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: Unauthorized
+
+#MATCH
+  /match:
+    description: Match Resource
+    post:
+      tags:
+        - "Match"
+      summary: Create Match
+
+      requestBody:
+        description: create match
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                homeTeam:
+                  type: string
+                  example: "name"
+                awayTeam:
+                  type: string
+                  example: "name"
+                matchVenue:
+                  type: string
+                  example: "name"
+                date: 
+                  type: string
+                  format: date
+                time:
+                  type: string
+                  format: time
+                mainReferee:
+                  type: string
+                linesman1:
+                  type: string
+                linesman2:
+                  type: string
+                  
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: "Please insert valid stadium"
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: "Linesmen should be different"
+  /match/get_matches:
+    description: Match Resource
+    post:
+      tags:
+        - "Match"
+      description: Get All Matches
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Match"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+  /match/get_match/:id:
+    description: Match Resource
+    post:
+      tags:
+        - "Match"
+      description: Get Match By Id
+
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    items:
+                      $ref: "#/components/schemas/Match"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+  /match/update_match/:id:
+    description: Match Resource
+    post:
+      tags:
+        - "Match"
+      description: Update Match By Id
+      requestBody:
+        description: user data to update
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                matchVenue:
+                  type: string
+                date:
+                  type: string
+                  format: date
+                  example: address
+                time:
+                  type: string
+                  format: time
+                mainReferee:
+                  type: string
+                linesman1:
+                  type: string
+                linesman2:
+                  type: string
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    items:
+                      $ref: "#/components/schemas/Match"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+
+  #STADIUM
+  /stadium:
+    description: Stadium Resource
+    post:
+      tags:
+        - "Stadium"
+      summary: Create Stadium
+
+      requestBody:
+        description: create stadium
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                name:
+                  type: string
+                rows:
+                  type: number
+                numberOfSeatsPerRow:
+                  type: number  
+
+
+              
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: "All fields are required please fill all"
+  /stadium/get_all_stadium:
+    description: Stadium Resource
+    post:
+      tags:
+        - "Stadium"
+      summary: Get All Stadiums
+              
+      responses:
+        200:
+          description: Success operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Stadium"
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: fail
+                  errorMessage:
+                    type: string
+                    example: "All fields are required please fill all"
+  
+                    
+                    
+components:
+  schemas:
+
+
+    error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        errorMessage:
+          type: string
+
+    
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: int64
+          example: 10
+        firstName:
+          type: string
+          example: uniqueuser
+        email:
+          type: string
+          example: user@email.com
+        lastName:
+          type: string
+          example: name
+        gender:
+          type: string
+          example: male
+        address:
+          type: string
+          example: address
+        userName:
+          type: string
+          example: name
+        role:
+          type: string
+          example: user
+        password:
+          type: string
+          example: a12469794
+        city:
+          type: string
+          example: helwan
+    
+    Match:
+      type: object
+      properties:
+          _id:
+            type: string
+          homeTeam:
+            type: object
+            properties:
+              name:
+                type: string
+              url:
+                type: string
+          awayTeam:
+            type: object
+            properties:
+              name:
+                type: string
+              url:
+                type: string
+          matchVenue:
+            type: object
+            properties:
+              name:
+                type: string
+              rows:
+                type: number
+              numberOfSeatsPerRow:
+                type: number
+          date: 
+            type: string
+            format: date
+          time:
+            type: string
+            format: time
+          mainReferee:
+            type: string
+          linesman1:
+            type: string
+          linesman2:
+            type: string
+          allSeats:
+            type: array
+            items:
+              type: array
+              items:
+                type: boolean
+                example: true
+    Stadium:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        rows:
+          type: number
+        numberOfSeatsPerRow:
+          type: number        
+
+        
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: jwt # cookie name
+    oAuthSample: # <---- arbitrary name
+      type: oauth2
+      description: Facebook or google authentication
+      flows:
+        implicit: # <---- OAuth flow(authorizationCode, implicit, password or clientCredentials)
+          authorizationUrl: /oauth/authorize
+          scopes:
+            access_token: token
+
+  responses:
+    UnauthorizedError:
+      description: unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: fail
+              errorMessage:
+                type: string
+                example: unauthorized

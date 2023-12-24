@@ -5,14 +5,14 @@ import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { BiPencil } from 'react-icons/bi';
-const EditMatches = () => {
+const EditMatches = (props) => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [formData, setFormData] = useState({
-        matchVenue: '',
-        dateTime: '',
-        mainReferee: '',
-        linesman1: '',
-        linesman2: '',
+        matchVenue: null,
+        time: null,
+        mainReferee: null,
+        linesman1: null,
+        linesman2: null,
     });
 
     const togglePopup = () => {
@@ -33,11 +33,14 @@ const EditMatches = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle form submission logic here
+        console.log(props.matchId)
         console.log('Form submitted:', formData);
         // Close the popup after form submission
         setPopupVisible(false);
         try {
-            const response = await axios.post('your-api-endpoint', formData);
+            const id = props.matchId
+            console.log(`http://localhost:8000/api/v1/match/update_match/${id}`)
+            const response = await axios.post(`http://localhost:8000/api/v1/match/update_match/${id}`, formData);
 
             console.log('Server response:', response.data);
         } catch (error) {
@@ -72,8 +75,8 @@ const EditMatches = () => {
                                 Date & Time:
                                 <input
                                     type="datetime-local"
-                                    name="dateTime"
-                                    value={formData.dateTime}
+                                    name="time"
+                                    value={formData.time}
                                     onChange={handleChange}
                                 />
                             </label></div>

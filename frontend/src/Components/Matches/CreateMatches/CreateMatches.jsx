@@ -11,7 +11,8 @@ const CreateMatches = () => {
         homeTeam: '',
         awayTeam: '',
         matchVenue: '',
-        dateTime: '',
+        date: '2023-12-24',
+        time:'',
         mainReferee: '',
         linesman1: '',
         linesman2: '',
@@ -39,7 +40,7 @@ const CreateMatches = () => {
         // Close the popup after form submission
         setPopupVisible(false);
         try {
-            const response = await axios.post('your-api-endpoint', formData);
+            const response = await axios.post('http://localhost:8000/api/v1/match', formData);
 
             console.log('Server response:', response.data);
         } catch (error) {
@@ -95,8 +96,8 @@ const CreateMatches = () => {
                                 Date & Time:
                                 <input
                                     type="datetime-local"
-                                    name="dateTime"
-                                    value={formData.dateTime}
+                                    name="time"
+                                    value={formData.time}
                                     onChange={handleChange}
                                 />
                             </label></div></div>
