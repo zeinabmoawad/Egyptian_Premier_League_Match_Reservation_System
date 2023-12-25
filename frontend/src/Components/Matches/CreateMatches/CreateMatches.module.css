@@ -47,7 +47,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: start;
+  align-items: end;
 }
 .close_button {
   color: black;
@@ -59,11 +59,13 @@ form {
 input:focus {
   border: 3px solid #198754;
 }
+.popup input:focus{
+  border: 3px solid white;
+}
 h3 {
   color: #5c7064;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-
 .form_columns label {
   text-decoration: none;
   display: flex;
@@ -74,18 +76,12 @@ h3 {
   height: 100%;
   margin-top: 5%;
 }
-
-label input {
-  margin-top: 1%;
-}
-
 .sumbit_button {
   margin-bottom: 3%;
   height: 10%;
   width: 20%;
   margin-left: 80%;
 }
-
 .popup_button {
   height: 100%;
   width: 10%;

@@ -114,6 +114,10 @@
 }
 .view-match-edit {
   position: absolute;
-  right: 68px;
-  top: 21px;
+  right: 23px;
+  top: 23px;
+}
+.view-matches-linesmans{
+  display: flex;
+  justify-content: space-around;
 }
