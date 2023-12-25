@@ -36,7 +36,9 @@ export default function DeleteTicketPopUp(props) {
       // Call the purchase API or perform any other action here
 
       // Close the popup window
+      props.purchase_request();
       props.closeWindow(false);
+      window.location.reload();
     }
   };
 

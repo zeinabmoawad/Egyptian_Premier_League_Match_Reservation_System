@@ -4,16 +4,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./ProfilePage.css";
 import DatePicker from "react-datepicker";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import axios from "axios";
 
-const ProfilePage = () => {
-  const [username, setUsername] = useState("");
+const ProfilePage = (props) => {
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState(props.data.gender);
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [role, setRole] = useState("");
@@ -21,6 +20,33 @@ const ProfilePage = () => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const storedToken = localStorage.getItem('token');
+    const body={
+      firstName:fname,
+      lastName: lname,
+      gender: gender,
+      address: address,
+      city: city,
+      birthDate: selectedDate,
+    }
+    console.log(body)
+    try {
+        const response = await axios.post("http://localhost:8000/api/v1/users/update_user", body, {
+          headers: {
+            'Authorization': `Bearer ${storedToken}`,
+            'Content-Type': 'application/json' // Adjust content type as needed
+          }
+        });
+        if (response.status === 200) {
+          console.log('Updated successfully!');
+          window.location.reload();
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
+};
 
   return (
     <div>
@@ -34,9 +60,8 @@ const ProfilePage = () => {
                 className="form-control"
                 type="text"
                 placeholder="Enter Name"
-                value={username}
-                required
-                onChange={(e) => setUsername(e.target.value)}
+                value={props.data.userName}
+                disabled
               ></Form.Control>
               <Form.Label>First Name</Form.Label>
               <Form.Control
@@ -87,9 +112,6 @@ const ProfilePage = () => {
                   scrollableYearDropdown
                 />
               </Form.Group>
-              <Button type="submit" varient="primary">
-                Update
-              </Button>
             </Form>
           </Col>
           <Col md={6}>
@@ -99,9 +121,8 @@ const ProfilePage = () => {
                 <Form.Control
                   type="email"
                   placeholder="Enter Email"
-                  value={email}
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={props.data.email}
+                  disabled
                 ></Form.Control>
               </Form.Group>
               <Form.Label>Last Name</Form.Label>
@@ -147,6 +168,9 @@ const ProfilePage = () => {
                   <option value="fan">Fan</option>
                 </Form.Control>
               </Form.Group>
+              <Button type="submit" varient="primary" onClick={handleSubmit}>
+                Update
+              </Button>
             </Form>
           </Col>
         </Row>

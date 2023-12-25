@@ -76,7 +76,6 @@ export default function MatchDetails(props) {
         const response = await axios.get(apiUrl);
         setMatch(response.data.data);
         console.log("response", response.data);
-        console.log("url = ",response.data.data.homeTeam)
       } catch (error) {
         console.error('Error fetching match details:', error);
       }
@@ -91,6 +90,7 @@ export default function MatchDetails(props) {
           <DeleteTicketPopUp
             price={selectedSeats.length * 200}
             closeWindow={setPurchase}
+            purchase_request={purchase_request}
             />
         </div>
       ) : null}
@@ -120,6 +120,7 @@ export default function MatchDetails(props) {
               rows={match.matchVenue.rows}
               onSeatClick={handleSeatClick}
               selectedSeats={selectedSeats}
+              reserved={match.allSeats}
             ></Seats>
             <img src={field} alt="" />
           </Col>
@@ -131,7 +132,7 @@ export default function MatchDetails(props) {
                   type="button"
                   class="btn btn-primary"
                   // onClick={() => setPurchase(true)}
-                  onClick={purchase_request}
+                  onClick={() => setPurchase(true)}
                 >
                   Purchase
                 </button>
