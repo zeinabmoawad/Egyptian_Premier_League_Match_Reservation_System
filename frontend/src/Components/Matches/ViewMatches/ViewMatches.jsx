@@ -4,11 +4,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FaLocationDot } from "react-icons/fa6";
 import CreateMatches from "../CreateMatches/CreateMatches.jsx";
 import EditMatches from "../EditMatches/EditMatches.jsx";
-import DeletePopUp from "../../User/DeleteUser/DeletePopup/DeletePopUp.jsx";
-import ApproveUser from "../../User/Requests/ApproveOrDisApprove/ApproveUser.jsx";
-import DisApproveUser from "../../User/Requests/ApproveOrDisApprove/DisApproveUser.jsx";
 import axios from "axios";
 import { PiPersonSimpleRunBold } from "react-icons/pi";
+import { FaRunning } from "react-icons/fa";
 
 export default function ViewMatches(props) {
   const [matches, setMatchData] = useState([]);
@@ -107,7 +105,10 @@ export default function ViewMatches(props) {
                       <FaLocationDot></FaLocationDot>
                       {item.matchVenue.name}
                     </p>
-                    <p>{item.mainReferee}</p>
+                    <p>
+                      <FaRunning size={30}/>
+                      {item.mainReferee}
+                    </p>
                     <div className="view-matches-linesmans">
                       <p>
                         <PiPersonSimpleRunBold /> {item.linesman1}
