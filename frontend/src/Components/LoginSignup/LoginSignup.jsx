@@ -32,6 +32,8 @@ function Login() {
         if(responseuser.status===200){      
             localStorage.setItem('userType', responseuser.data.user.role);
             navigate("/");
+            window.location.reload();
+
       }
       } else {
         console.error('Error deleting item:', response.statusText);
