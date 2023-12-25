@@ -1,9 +1,10 @@
-// Navbar.js
+import { redirect } from "react-router-dom";
 import React, { useState } from "react";
 import classes from "./Navbar.module.css";
 const Navbar = ({ logo, links }) => {
   function handleLogout() {
     localStorage.clear();
+    redirect("/");
     window.location.reload();
   }
   console.log(localStorage.getItem("userType"));
