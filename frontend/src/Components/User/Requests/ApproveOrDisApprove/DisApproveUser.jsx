@@ -4,27 +4,37 @@ import { BiX   } from 'react-icons/bi';
 import Button from 'react-bootstrap/Button';
 
 import classes from "./ApproveUser.module.css"
-const DisApproveUser = () => {
+const DisApproveUser = (props) => {
     const [isPopupVisible, setPopupVisible] = useState(false);
 
     const showPopup = () => setPopupVisible(true);
     const hidePopup = () => setPopupVisible(false);
   
     const handleApprove = async () => {
-        try {
-          // Make the API request to the delete endpoint using Axios
-          const response = await axios.delete("");
-    
-          // Check if the request was successful
-          if (response.status === 200) {
-            console.log('Item deleted successfully!');
-          } else {
-            console.error('Error deleting item:', response.statusText);
+      try {
+        // Make the API request to the delete endpoint using Axios
+        console.log(props.id);
+        const body={
+          userId: props.id,
+        } 
+        const storedToken = localStorage.getItem('token');
+        const response = await axios.post("http://localhost:8000/api/v1/users/disapprove_user", body, {
+          headers: {
+            'Authorization': `Bearer ${storedToken}`,
+            'Content-Type': 'application/json' // Adjust content type as needed
           }
-        } catch (error) {
-          console.error('Error:', error.message);
+        });
+  
+        // Check if the request was successful
+        if (response.status === 200) {
+          console.log('Item Approved successfully!');
+        } else {
+          console.error('Error approving item:', response.statusText);
         }
-    
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
+        props.onDisapprove();
         hidePopup();
       };
     return (

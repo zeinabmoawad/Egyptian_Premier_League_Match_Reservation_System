@@ -3,8 +3,10 @@ import axios from 'axios';
 import { BiCheck  } from 'react-icons/bi';
 import Button from 'react-bootstrap/Button';
 
-import classes from "./ApproveUser.module.css"
-const ApproveUser = () => {
+import classes from "./ApproveUser.module.css";
+
+
+const ApproveUser = (props) => {
     const [isPopupVisible, setPopupVisible] = useState(false);
 
     const showPopup = () => setPopupVisible(true);
@@ -13,18 +15,28 @@ const ApproveUser = () => {
     const handleApprove = async () => {
         try {
           // Make the API request to the delete endpoint using Axios
-          const response = await axios.delete("");
+          console.log(props.id);
+          const body={
+            userId: props.id,
+          } 
+          const storedToken = localStorage.getItem('token');
+          const response = await axios.post("http://localhost:8000/api/v1/users/approve_user", body, {
+            headers: {
+              'Authorization': `Bearer ${storedToken}`,
+              'Content-Type': 'application/json' // Adjust content type as needed
+            }
+          });
     
           // Check if the request was successful
           if (response.status === 200) {
-            console.log('Item deleted successfully!');
+            console.log('Item Approved successfully!');
           } else {
-            console.error('Error deleting item:', response.statusText);
+            console.error('Error approving item:', response.statusText);
           }
         } catch (error) {
           console.error('Error:', error.message);
         }
-    
+        props.onApprove();
         hidePopup();
       };
     return (
@@ -36,7 +48,6 @@ const ApproveUser = () => {
             <div className={classes.buttons}>
             <Button className={classes.cancel_button} onClick={handleApprove} variant="success">Approve</Button>
             <Button className={classes.delete_button} onClick={hidePopup} variant="danger">cancel</Button>
-              
             </div>
            
           </div>

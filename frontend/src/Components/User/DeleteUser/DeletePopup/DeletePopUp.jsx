@@ -12,11 +12,17 @@ const DeletePopUp = (props) => {
   
     const handleDelete = async () => {
         try {
+          const storedToken = localStorage.getItem('token');
           const body = {
               userId: props.userId,
           };
           // Make the API request to the delete endpoint using Axios
-          const response = await axios.post("http://localhost:8000/api/v1/users/delete_user", body);
+          const response = await axios.post("http://localhost:8000/api/v1/users/delete_user", body,{
+            headers: {
+              'Authorization': `Bearer ${storedToken}`,
+              'Content-Type': 'application/json' // Adjust content type as needed
+            }
+          });
     
           // Check if the request was successful
           if (response.status === 200) {
@@ -27,7 +33,7 @@ const DeletePopUp = (props) => {
         } catch (error) {
           console.error('Error:', error.message);
         }
-    
+        props.onDelete();
         hidePopup();
       };
     return (
