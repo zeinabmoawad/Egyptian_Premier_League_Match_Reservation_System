@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { BiPencil } from 'react-icons/bi';
-const EditMatches = () => {
+const EditMatches = (props) => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [formData, setFormData] = useState({
         matchVenue: undefined,
