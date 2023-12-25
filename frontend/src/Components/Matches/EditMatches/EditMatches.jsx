@@ -39,8 +39,13 @@ const EditMatches = (props) => {
         setPopupVisible(false);
         try {
             const id = props.matchId
-            console.log(`http://localhost:8000/api/v1/match/update_match/${id}`)
-            const response = await axios.post(`http://localhost:8000/api/v1/match/update_match/${id}`, formData);
+            const storedToken = localStorage.getItem('token');
+            const response = await axios.post(`http://localhost:8000/api/v1/match/update_match/${id}`, formData,{
+                headers: {
+                  'Authorization': `Bearer ${storedToken}`,
+                  'Content-Type': 'application/json' // Adjust content type as needed
+                }
+              });
             props.change(response.data);
             console.log('Server response:', response.data);
         } catch (error) {

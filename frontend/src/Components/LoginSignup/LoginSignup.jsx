@@ -17,12 +17,22 @@ function Login() {
         password: password
       };
       // Make the API request to the delete endpoint using Axios
-      const response = await axios.post("http://localhost:8000/api/v1/users/login", body);
-      localStorage.setItem('token', response.data.token);
+      const response = await axios.post("http://localhost:8000/api/v1/users/login", body);   
       // Check if the request was successful
       if (response.status === 200) {
         console.log('Login successfully!');
-        navigate("/");
+        localStorage.setItem('token', response.data.token);
+
+        const responseuser = await axios.get("http://localhost:8000/api/v1/users/user", {
+          headers: {
+            'Authorization': `Bearer ${response.data.token}`,
+            'Content-Type': 'application/json' // Adjust content type as needed
+          }
+        });
+        if(responseuser.status===200){      
+            localStorage.setItem('userType', responseuser.data.user.role);
+            navigate("/");
+      }
       } else {
         console.error('Error deleting item:', response.statusText);
       }

@@ -36,7 +36,14 @@ export default function ViewMatches(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(apiUrl);
+        const storedToken = localStorage.getItem('token');
+        const response = await axios.get(apiUrl,{
+          headers: {
+            'Authorization': `Bearer ${storedToken}`,
+            'Content-Type': 'application/json' // Adjust content type as needed
+          }
+        });
+        
         setMatchData(response.data.data);
       } catch (error) {
         console.error('Error fetching match details:', error);
@@ -47,6 +54,7 @@ export default function ViewMatches(props) {
   }, [apiUrl]);
 
   function changeMatches(updatedmatch){
+
     setMatchData((prevMatches) => {
       return prevMatches.map((match) => {
         if (match._id === updatedmatch.data._id) {
@@ -57,7 +65,9 @@ export default function ViewMatches(props) {
       });
     });
   }
-
+  function changeMatcheCreate(updatedMatch){
+    setMatchData((prevMatches) => [...prevMatches, updatedMatch.data]);
+  }
   // var matches = [
   //   {
   //     id: 1,
@@ -127,7 +137,7 @@ export default function ViewMatches(props) {
         <Row className="matches-header">
           <Col className="matches-header-column">
             <p>Matches</p>
-            {props.userType == "manager" && <CreateMatches></CreateMatches>}
+            {props.userType == "manager" && <CreateMatches change={changeMatcheCreate}></CreateMatches>}
           </Col>
         </Row>
         <Row className="matches justify-content-start">
