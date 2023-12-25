@@ -1,9 +1,3 @@
-.screen {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
 .loginsignup-container {
   display: flex;
   flex-direction: column;
@@ -14,9 +8,11 @@
   padding-bottom: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;;
+  color: #5c6570;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   display: flex;
   align-items: center;
+  margin: auto;
 }
 
 .header {
@@ -28,13 +24,6 @@
   margin-top: 30px;
   font-size: x-large;
 }
-
-/* .text .h1 {
-  color: #5c6570;
-  background-color: rebeccapurple;
-  text-align: center;
-} */
-
 .underline {
   width: 61px;
   height: 6px;
@@ -44,7 +33,7 @@
 
 .inputs {
   width: 80%;
-  margin-top: 55px;
+  margin-top: 46px;
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -53,7 +42,6 @@
 .input {
   display: flex;
   align-items: center;
-  /* margin: ; */
   margin-left: 15px;
   border-radius: 4px;
   background-color: #f5f8f9;
@@ -61,12 +49,11 @@
   border: 3px solid #ccc;
   height: 100%;
   background-color: #f6f8f9;
-  /* color: #5c6570; */
   font-family: Helvetica Neue;
 }
 
 .input .icon {
-  margin: 0px 30px;
+  margin: 0px 15px;
 }
 
 .input input {
@@ -74,12 +61,10 @@
   background: transparent;
   border: none;
   outline: none;
-  /* color: #797979; */
   font-size: 19px;
 }
 
 .forgot-password {
-  padding-left: 62px;
   margin-top: 27px;
   font-size: 18px;
   color: #00cbdf;
@@ -99,27 +84,21 @@
   width: 250px;
   height: 55px;
   color: #fff;
-  background-color: #441b74;
+  background-color: #198754;
   border-radius: 50px;
   font-size: 19px;
   font-weight: 700;
   cursor: pointer;
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;;
-
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-
 .gray {
   background: #eaeaea;
-  /* color: #676767; */
 }
-a{
+a {
   text-decoration: none;
 }
-.signinlink{
+.signinlink {
   margin-bottom: 10px;
   text-align: center;
-} 
-.span_new{
-  font-size:25px;
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 15px;
 }

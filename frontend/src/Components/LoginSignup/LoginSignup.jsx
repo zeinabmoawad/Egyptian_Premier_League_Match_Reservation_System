@@ -43,14 +43,13 @@ function Login() {
     }
   };
   return (
-    <div className="screen">
       <div className="loginsignup-container">
         <div className="header">
           <div className="text">
             <h2>{action}</h2>
           </div>
           <div className="signinlink">
-            <span className="span_new">New ? </span>
+            <span className="span_new">New? </span>
             <a href="/Signup">Create an account</a>
           </div>
         </div>
@@ -68,14 +67,6 @@ function Login() {
           <div className="forgot-password">Forgot your password?</div>
         )}
         <div className="submit-container">
-          {/* <div
-            className={action === "Sign Up" ? "submit" : "submit  gray"}
-            onClick={() => {
-              setAction("Sign Up");
-            }}
-          >
-            Sign Up
-          </div> */}
           <div
             className={username && password? "submit" : "submit  gray"}
             onClick={handleLogin}
@@ -84,7 +75,6 @@ function Login() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

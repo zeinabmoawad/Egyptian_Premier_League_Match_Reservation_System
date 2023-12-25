@@ -10,17 +10,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  /* height: 90vh; */
   width: 30vw;
   margin-top: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  width: 30%;
+  margin: auto;
+  background-color: white;
+  padding: 13px;
 }
-.form_container form{
-  
-width: 85%;
-/* background-color: #4c3889; */
-display: block;
+.form_container form {
+  width: 85%;
+  display: block;
 }
 
 .form_group {
@@ -54,16 +55,16 @@ h2 {
 }
 
 input:focus {
-  border: 3px solid #4c3889;
+  border: 3px solid #27ad6f;
 }
-.signup button {
+.form_container button {
   display: block;
   margin: auto;
   border-radius: 30px;
   width: 80%;
   height: 6%;
-  background-color: #4c3889;
-  border: 3px solid #4c3889;
+  background-color: #198754;
+  border: 3px solid #198754;
   margin-bottom: 10px;
   color: white;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
