@@ -17,7 +17,7 @@ import Home from "./Components/Home/Home.jsx";
 import Profile from "./Components/ProfilePage/profile.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 function App() {
-  const user = "user";
+  const user = "admin";
   let links;
   switch (user) {
     case "guest":

@@ -7,15 +7,14 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import axios from "axios";
 
 const ProfilePage = (props) => {
-  const [fname, setFName] = useState("");
-  const [lname, setLName] = useState("");
+  const [fname, setFName] = useState(props.data.firstName);
+  const [lname, setLName] = useState(props.data.lastName);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(props.data.birthDate);
   const [gender, setGender] = useState(props.data.gender);
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
-  const [role, setRole] = useState("");
+  const [city, setCity] = useState(props.data.city);
+  const [address, setAddress] = useState(props.data.address);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -94,7 +93,7 @@ const ProfilePage = (props) => {
                     required
                   />
                   <Form.Group controlId="addressControl">
-                    <Form.Label>Address (Optional)</Form.Label>
+                    <Form.Label>Address</Form.Label>
                     <Form.Control
                       type="text"
                       value={address}
@@ -158,15 +157,12 @@ const ProfilePage = (props) => {
               <Form.Group controlId="roleControl">
                 <Form.Label>Role</Form.Label>
                 <Form.Control
-                  as="select"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  required
-                >
-                  <option value="">Select Role</option>
-                  <option value="manager">Manager</option>
-                  <option value="fan">Fan</option>
-                </Form.Control>
+                className="form-control"
+                type="text"
+                placeholder="Enter Name"
+                value={props.data.role}
+                disabled
+              ></Form.Control>
               </Form.Group>
               <Button type="submit" varient="primary" onClick={handleSubmit}>
                 Update

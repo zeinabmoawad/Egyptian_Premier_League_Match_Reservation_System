@@ -7,25 +7,34 @@ import axios from "axios";
 
 export default function DeleteUser() {
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
-    // Fetch match data
-    axios.get("your_endpoint_url")
-      .then(response => {
-        setUsers(response.data);
-      })
-      .catch(error => {
-        console.error("Error fetching match data:", error);
+    const fetchData = async () => {
+      try {
+        const storedToken = localStorage.getItem('token');
+        const response = await axios.get("http://localhost:8000/api/v1/users/get_all_users",{
+        headers: {
+          'Authorization': `Bearer ${storedToken}`,
+          'Content-Type': 'application/json' // Adjust content type as needed
+        }
       });
+        setUsers(response.data.users);
+        console.log("response", response.data.users);
+      } catch (error) {
+        console.error('Error fetching user reservations:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  function handleDelete(index) {
+    setUsers((users) => {
+      const updatedUsers = [...users];
+      updatedUsers.splice(index, 1);
+      return updatedUsers;
     });
-  //   // Fetch teams logos data
-  //   axios.get("your_teams_logos_endpoint_url")
-  //     .then(response => {
-  //       setTeamsLogos(response.data.teamsLogos);
-  //     })
-  //     .catch(error => {
-  //       console.error("Error fetching teams logos data:", error);
-  //     });
-  // }, []);
+  }
+
   return (
     <div>
       <Container className="matches-container">
@@ -38,7 +47,7 @@ export default function DeleteUser() {
           {users.map((item, i) => (
             <Col md={3} key={i} className="delete-popup">
               <div className='delete-popup-icon'>
-                <DeletePopUp userId={item.userId}/>
+                <DeletePopUp userId={item._id} onDelete={()=>handleDelete(i)}/>
               </div>
               <User user={item}  />
             </Col>

@@ -5,7 +5,8 @@
   color: black;
 }
 .reserved {
-  color: gray;
+  color: red;
+  cursor: not-allowed;
 }
 .icon {
   font-size: large;

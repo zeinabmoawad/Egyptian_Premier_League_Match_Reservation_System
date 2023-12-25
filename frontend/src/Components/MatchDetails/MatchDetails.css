@@ -34,6 +34,10 @@
   font-size: 15px;
   font-weight: 500;
 }
+.match-details-teams img {
+  width: 230px;
+  height: 230px;
+}
 .match-details-container img {
   display: block;
   margin: auto;

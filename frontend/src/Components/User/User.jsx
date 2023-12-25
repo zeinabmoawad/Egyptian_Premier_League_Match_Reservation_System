@@ -10,10 +10,10 @@ export default function User(props) {
     <div className="delete-user">
       <FaUser className="delete-user-icon" />
       <p className="delete-user-name">{props.user.name}</p>
-      <p className="delete-user-username">{props.user.username}</p>
+      <p className="delete-user-username">{props.user.userName}</p>
       <p className="delete-user-location">
         <FaLocationDot />
-        {props.user.location}
+        {props.user.address}
       </p>
       <p className="delete-user-email">
         <MdOutlineEmail />
@@ -26,7 +26,7 @@ export default function User(props) {
         </p>
         <p>
           <FaBirthdayCake className="delete-user-p-icon" />
-          {props.user.birthdate}
+          {new Date(props.user.birthDate).getMonth() + 1 < 10 ? '0' : ''}{new Date(props.user.birthDate).getMonth() + 1}/{new Date(props.user.birthDate).getMonth() < 10 ? '0' : ''}{new Date(props.user.birthDate).getDate()}/{new Date(props.user.birthDate).getFullYear()}
         </p>
       </div>
     </div>
