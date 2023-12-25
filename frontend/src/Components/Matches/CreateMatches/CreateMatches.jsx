@@ -5,17 +5,17 @@ import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreateMatches = () => {
+const CreateMatches = (props) => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [formData, setFormData] = useState({
         homeTeam: '',
         awayTeam: '',
         matchVenue: '',
-        date: '2023-12-24',
         time:'',
         mainReferee: '',
         linesman1: '',
         linesman2: '',
+        role:localStorage.getItem("userType")
     });
 
     const togglePopup = () => {
@@ -40,8 +40,14 @@ const CreateMatches = () => {
         // Close the popup after form submission
         setPopupVisible(false);
         try {
-            const response = await axios.post('http://localhost:8000/api/v1/match', formData);
-
+            const storedToken = localStorage.getItem('token');
+            const response = await axios.post('http://localhost:8000/api/v1/match', formData,{
+                headers: {
+                  'Authorization': `Bearer ${storedToken}`,
+                  'Content-Type': 'application/json' // Adjust content type as needed
+                }
+              });
+              props.change(response.data);
             console.log('Server response:', response.data);
         } catch (error) {
             console.error('Error submitting form:', error.message);

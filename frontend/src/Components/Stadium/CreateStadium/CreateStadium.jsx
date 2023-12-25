@@ -11,6 +11,8 @@ const CreateStadium = (props) => {
         name:'',
         rows: 0,
         numberOfSeatsPerRow:0,
+        role:localStorage.getItem("userType")
+
     });
 
     const togglePopup = () => {
@@ -35,11 +37,13 @@ const CreateStadium = (props) => {
         // Close the popup after form submission
         setPopupVisible(false);
         try {
-            const response = await axios.post('http://localhost:8000/api/v1/stadium', formData);
-
-            // console.log('Server response:', response.data);
-            // console.log("Createeeeeeeeeeeeeeeeeee")
-            // console.log(response)
+            const storedToken = localStorage.getItem('token');
+            const response = await axios.post('http://localhost:8000/api/v1/stadium', formData,{
+                headers: {
+                  'Authorization': `Bearer ${storedToken}`,
+                  'Content-Type': 'application/json' // Adjust content type as needed
+                }
+              });
             props.change(response.data);
 
         } catch (error) {
