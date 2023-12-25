@@ -51,9 +51,10 @@ export default function Seats(props) {
               <Seat
                 userType={props.userType}
                 key={`${i}-${j}`}
-                id={alphabet[i] + j}
+                id={`${i+1}${j}`}
                 onSeatClick={props.onSeatClick}
-                selected={props.selectedSeats.includes(alphabet[i] + j)}
+                selected={props.selectedSeats.includes(`${i+1}${j}`)}
+                reserved={props.reserved[i][j-1]}
               />
             </Col>
           );

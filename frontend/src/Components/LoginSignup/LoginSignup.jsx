@@ -18,7 +18,7 @@ function Login() {
       };
       // Make the API request to the delete endpoint using Axios
       const response = await axios.post("http://localhost:8000/api/v1/users/login", body);
-
+      localStorage.setItem('token', response.data.token);
       // Check if the request was successful
       if (response.status === 200) {
         console.log('Login successfully!');

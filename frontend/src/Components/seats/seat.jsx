@@ -21,7 +21,7 @@ export default function Seat(props) {
     if (props.userType == "guest") {
       // Change the route programmatically
       navigate("/Signup");
-    } else if (!reserved) {
+    } else if (!props.reserved) {
       // setSelected(!selected);
       props.onSeatClick(props.id);
     }
@@ -31,7 +31,7 @@ export default function Seat(props) {
       <FaChair
         size={50}
         className={
-          reserved
+          props.reserved
             ? "reserved icon"
             : props.selected
             ? "selected icon"
