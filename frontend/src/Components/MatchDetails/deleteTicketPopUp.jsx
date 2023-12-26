@@ -23,10 +23,16 @@ export default function DeleteTicketPopUp(props) {
     if (creditCard.trim() === "") {
       setCreditCardError("Please enter a credit card number");
       isValid = false;
+    } else if (creditCard.length != 16) {
+      setCreditCardError("Please enter a valid credit card number");
+      isValid = false;
     }
 
     if (pin.trim() === "") {
       setPinError("Please enter a PIN");
+      isValid = false;
+    } else if (pin.length != 3) {
+      setPinError("Please enter a valid PIN number");
       isValid = false;
     }
 

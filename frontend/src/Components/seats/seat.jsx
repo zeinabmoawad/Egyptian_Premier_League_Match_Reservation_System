@@ -10,9 +10,11 @@ export default function Seat(props) {
     if (props.userType == "guest") {
       navigate("/Signup");
       // navigate('/Signup');
-    } else if (!reserved) {
-      // setSelected(!selected);
-      props.onSeatClick(props.id);
+    } else if (props.userType == "user") {
+      if (!reserved) {
+        // setSelected(!selected);
+        props.onSeatClick(props.id);
+      }
     }
   }
   const navigate = useNavigate();

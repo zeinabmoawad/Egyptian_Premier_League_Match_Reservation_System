@@ -21,31 +21,36 @@ const ProfilePage = (props) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const storedToken = localStorage.getItem('token');
-    const body={
-      firstName:fname,
+    const storedToken = localStorage.getItem("token");
+    const body = {
+      firstName: fname,
       lastName: lname,
       gender: gender,
       address: address,
       city: city,
       birthDate: selectedDate,
-    }
-    console.log(body)
+    };
+    console.log(body);
     try {
-        const response = await axios.post("http://localhost:8000/api/v1/users/update_user", body, {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/users/update_user",
+        body,
+        {
           headers: {
-            'Authorization': `Bearer ${storedToken}`,
-            'Content-Type': 'application/json' // Adjust content type as needed
-          }
-        });
-        if (response.status === 200) {
-          console.log('Updated successfully!');
-          window.location.reload();
+            Authorization: `Bearer ${storedToken}`,
+            "Content-Type": "application/json", // Adjust content type as needed
+          },
         }
+      );
+      if (response.status === 200) {
+        console.log("Updated successfully!");
+        window.location.reload();
+      }
     } catch (error) {
-        console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
+      alert(error.response.data.errorMessage);
     }
-};
+  };
 
   return (
     <div>
@@ -157,12 +162,12 @@ const ProfilePage = (props) => {
               <Form.Group controlId="roleControl">
                 <Form.Label>Role</Form.Label>
                 <Form.Control
-                className="form-control"
-                type="text"
-                placeholder="Enter Name"
-                value={props.data.role}
-                disabled
-              ></Form.Control>
+                  className="form-control"
+                  type="text"
+                  placeholder="Enter Name"
+                  value={props.data.role}
+                  disabled
+                ></Form.Control>
               </Form.Group>
               <Button type="submit" varient="primary" onClick={handleSubmit}>
                 Update

@@ -17,6 +17,7 @@ export default function MatchDetails(props) {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [purchase, setPurchase] = useState(false);
   const handleSeatClick = (seatId) => {
+    // if(localStorage.getItem('userType'))
     if (selectedSeats.includes(seatId)) {
       setSelectedSeats((prevSelectedSeats) =>
         prevSelectedSeats.filter((id) => id !== seatId)
@@ -30,27 +31,36 @@ export default function MatchDetails(props) {
       prevSelectedSeats.filter((id) => id !== label)
     );
   }
-  
+
   const purchase_request = async (e) => {
-    for(var i=0;i< selectedSeats.length; i++){
-      const body = {matchId: matchid, seatRow: selectedSeats[i][0], seatColumn:selectedSeats[i][1]}
-      console.log(body)
+    for (var i = 0; i < selectedSeats.length; i++) {
+      const body = {
+        matchId: matchid,
+        seatRow: selectedSeats[i][0],
+        seatColumn: selectedSeats[i][1],
+      };
+      console.log(body);
       try {
         const id = props.matchId;
-        const storedToken = localStorage.getItem('token');
-        console.log(storedToken)
-        const response = await axios.post(`http://localhost:8000/api/v1/reservation/create_reservation`, body,{
-          headers: {
-            'Authorization': `Bearer ${storedToken}`,
-            'Content-Type': 'application/json' // Adjust content type as needed
+        const storedToken = localStorage.getItem("token");
+        console.log(storedToken);
+        const response = await axios.post(
+          `http://localhost:8000/api/v1/reservation/create_reservation`,
+          body,
+          {
+            headers: {
+              Authorization: `Bearer ${storedToken}`,
+              "Content-Type": "application/json", // Adjust content type as needed
+            },
           }
-        });
+        );
         // console.log('Server response:', response.errorMessage);
       } catch (error) {
-        console.error('Error submitting form:', error);
+        console.error("Error submitting form:", error);
+        alert(error.response.data.errorMessage);
       }
     }
-  }
+  };
 
   // const matchid = match.params.matchid;
   // useEffect(() => {
@@ -64,11 +74,11 @@ export default function MatchDetails(props) {
   //     socket.close();
   //   };
   // }, []);
-  
+
   const [match, setMatch] = useState({});
   const { matchid } = useParams();
   const apiUrl = `http://localhost:8000/api/v1/match/get_match/${matchid}`;
-  
+
   useEffect(() => {
     console.log("HERE");
     const fetchData = async () => {
@@ -77,7 +87,7 @@ export default function MatchDetails(props) {
         setMatch(response.data.data);
         console.log("response", response.data);
       } catch (error) {
-        console.error('Error fetching match details:', error);
+        console.error("Error fetching match details:", error);
       }
     };
 
@@ -91,67 +101,67 @@ export default function MatchDetails(props) {
             price={selectedSeats.length * 200}
             closeWindow={setPurchase}
             purchase_request={purchase_request}
-            />
+          />
         </div>
       ) : null}
-      {Object.keys(match).length != 0?
-      <Container className="container-fluid match-details-container">
-        <Row className="match-details-row">
-          <Col className="match-details-teams">
-            <div>
-              <img src={match.homeTeam.url} alt="" />
-              <p>{match.homeTeam.name}</p>
-            </div>
-            <div className="match-details-day-time">
-              <p className="match-details-time">12:00</p>
-              <p className="match-details-day">Mar 23,2023</p>
-            </div>
-            <div>
-              <img src={match.awayTeam.url} alt="" />
-              <p>{match.awayTeam.name}</p>
-            </div>
-          </Col>
-        </Row>
-        <Row className="match-details-row">
-          <Col>
-            <Seats
-              userType={props.userType}
-              columns={match.matchVenue.numberOfSeatsPerRow}
-              rows={match.matchVenue.rows}
-              onSeatClick={handleSeatClick}
-              selectedSeats={selectedSeats}
-              reserved={match.allSeats}
-            ></Seats>
-            <img src={field} alt="" />
-          </Col>
-          <Col>
-            {selectedSeats.length == 0 ? null : (
-              <div className="match-details-tickets-header">
-                <h1>Tickets:</h1>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  // onClick={() => setPurchase(true)}
-                  onClick={() => setPurchase(true)}
-                >
-                  Purchase
-                </button>
+      {Object.keys(match).length != 0 ? (
+        <Container className="container-fluid match-details-container">
+          <Row className="match-details-row">
+            <Col className="match-details-teams">
+              <div>
+                <img src={match.homeTeam.url} alt="" />
+                <p>{match.homeTeam.name}</p>
               </div>
-            )}
-            <div className="match-details-tickets">
-              {selectedSeats.map((item, i) => (
-                <Ticket
-                  key={i}
-                  label={item}
-                  price="200"
-                  deleteTicket={deleteTicket}
-                ></Ticket>
-              ))}
-            </div>
-          </Col>
-        </Row>
-      </Container>
-        :null}
+              <div className="match-details-day-time">
+                <p className="match-details-time">12:00</p>
+                <p className="match-details-day">Mar 23,2023</p>
+              </div>
+              <div>
+                <img src={match.awayTeam.url} alt="" />
+                <p>{match.awayTeam.name}</p>
+              </div>
+            </Col>
+          </Row>
+          <Row className="match-details-row">
+            <Col>
+              <Seats
+                userType={props.userType}
+                columns={match.matchVenue.numberOfSeatsPerRow}
+                rows={match.matchVenue.rows}
+                onSeatClick={handleSeatClick}
+                selectedSeats={selectedSeats}
+                reserved={match.allSeats}
+              ></Seats>
+              <img src={field} alt="" />
+            </Col>
+            <Col>
+              {selectedSeats.length == 0 ? null : (
+                <div className="match-details-tickets-header">
+                  <h1>Tickets:</h1>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    // onClick={() => setPurchase(true)}
+                    onClick={() => setPurchase(true)}
+                  >
+                    Purchase
+                  </button>
+                </div>
+              )}
+              <div className="match-details-tickets">
+                {selectedSeats.map((item, i) => (
+                  <Ticket
+                    key={i}
+                    label={item}
+                    price="200"
+                    deleteTicket={deleteTicket}
+                  ></Ticket>
+                ))}
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      ) : null}
     </div>
   );
 }

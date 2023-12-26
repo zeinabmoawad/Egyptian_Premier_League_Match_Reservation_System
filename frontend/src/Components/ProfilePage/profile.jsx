@@ -8,22 +8,23 @@ import { useState, useEffect } from "react";
 export default function Profile() {
   const [userData, setUserData] = useState({});
   const apiUrl = `http://localhost:8000/api/v1/users/user`;
-  const storedToken = localStorage.getItem('token');
+  const storedToken = localStorage.getItem("token");
 
-    useEffect(() => {
+  useEffect(() => {
     console.log("HERE");
     const fetchData = async () => {
       try {
         const response = await axios.get(apiUrl, {
           headers: {
-            'Authorization': `Bearer ${storedToken}`,
-            'Content-Type': 'application/json' // Adjust content type as needed
-          }
+            Authorization: `Bearer ${storedToken}`,
+            "Content-Type": "application/json", // Adjust content type as needed
+          },
         });
         setUserData(response.data.user);
         console.log("response", response.data);
       } catch (error) {
-        console.error('Error fetching match details:', error);
+        console.error("Error fetching match details:", error);
+        alert(error.response.data.errorMessage);
       }
     };
 

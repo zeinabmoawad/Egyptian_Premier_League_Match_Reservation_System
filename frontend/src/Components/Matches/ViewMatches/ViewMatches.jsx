@@ -26,6 +26,7 @@ export default function ViewMatches(props) {
         setMatchData(response.data.data);
       } catch (error) {
         console.error("Error fetching match details:", error);
+        alert(error.response.data.errorMessage);
       }
     };
 
@@ -33,6 +34,7 @@ export default function ViewMatches(props) {
   }, [apiUrl]);
 
   function changeMatches(updatedmatch) {
+    console.log("after change", updatedmatch);
     setMatchData((prevMatches) => {
       return prevMatches.map((match) => {
         if (match._id === updatedmatch.data._id) {
@@ -74,7 +76,14 @@ export default function ViewMatches(props) {
                     ></EditMatches>
                   )}
                 </div>
-                <a href={/MatchDetails/ + item._id}>
+                <a
+                  href={
+                    localStorage.getItem("userType") == "guest" ||
+                    localStorage.getItem("userType") == null
+                      ? "/signin"
+                      : /MatchDetails/ + item._id
+                  }
+                >
                   <div className="match-teams">
                     <div className="match-team match-team-left">
                       <img src={item.homeTeam.url} alt="" />
@@ -106,7 +115,7 @@ export default function ViewMatches(props) {
                       {item.matchVenue.name}
                     </p>
                     <p>
-                      <FaRunning size={30}/>
+                      <FaRunning size={30} />
                       {item.mainReferee}
                     </p>
                     <div className="view-matches-linesmans">

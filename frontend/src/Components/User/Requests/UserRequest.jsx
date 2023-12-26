@@ -16,18 +16,24 @@ export default function UserRequest() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const storedToken = localStorage.getItem('token');
-        const response = await axios.get("http://localhost:8000/api/v1/users/get_all_users",{
-        headers: {
-          'Authorization': `Bearer ${storedToken}`,
-          'Content-Type': 'application/json' // Adjust content type as needed
-        }
-      });
-        const filteredUsers = response.data.users.filter(item => item.role != "manager")
+        const storedToken = localStorage.getItem("token");
+        const response = await axios.get(
+          "http://localhost:8000/api/v1/users/get_all_users",
+          {
+            headers: {
+              Authorization: `Bearer ${storedToken}`,
+              "Content-Type": "application/json", // Adjust content type as needed
+            },
+          }
+        );
+        const filteredUsers = response.data.users.filter(
+          (item) => item.role != "manager"
+        );
         setUsers(filteredUsers);
         console.log("response", response.data.users);
       } catch (error) {
-        console.error('Error fetching user reservations:', error);
+        console.error("Error fetching user reservations:", error);
+        alert(error.response.data.errorMessage);
       }
     };
     fetchData();
@@ -58,12 +64,15 @@ export default function UserRequest() {
           {users.map((item, i) => (
             <Col md={3} className="request-user">
               <div className="request-user-icon-approve">
-                <ApproveUser id={item._id} onApprove={()=>handleDelete(i)}/>
+                <ApproveUser id={item._id} onApprove={() => handleDelete(i)} />
               </div>
               <div className="request-user-icon-disapprove">
-                <DisApproveUser id={item._id} onDisapprove={()=>handleDelete(i)}/>
+                <DisApproveUser
+                  id={item._id}
+                  onDisapprove={() => handleDelete(i)}
+                />
               </div>
-              <User user={item} key={i} ></User>
+              <User user={item} key={i}></User>
             </Col>
           ))}
         </Row>
